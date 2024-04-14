@@ -10,8 +10,29 @@ using namespace CGL;
 
 #define SURFACE_OFFSET 0.0001
 
+//double get_t(Vector3D pos, Vector3D normal, Vector3D point) {
+//    return dot(point - pos, normal) / dot(normal, normal);
+//}
+
 void Plane::collide(PointMass &pm) {
   // TODO (Part 3): Handle collisions with planes.
+    
+    if (dot(point - pm.position, normal) * dot(point - pm.last_position, normal) > 0.0) {
+        return;
+    } 
+//    else if (dot(point - pm.position, normal) == 0.0 && dot(point - pm.last_position, normal) != 0.0) {
+//        return;
+//    } else if (dot(point - pm.position, normal) != 0.0 && dot(point - pm.last_position, normal) == 0.0) {
+//        return;
+//    }
+    
+    double t = dot(point - pm.position, normal) / dot(normal, normal);
+    
+    Vector3D tangent = pm.position + t*normal;
+    
+    Vector3D correction = tangent - pm.last_position + normal * SURFACE_OFFSET;
+
+    pm.position = pm.last_position + correction * (1.0-friction);
 
 }
 
