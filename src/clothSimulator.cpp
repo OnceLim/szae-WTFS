@@ -397,7 +397,7 @@ void ClothSimulator::drawNormals(GLShader &shader) {
 void ClothSimulator::drawPhong(GLShader &shader) {
 
     for (auto particle : cloth->point_masses) {
-        particle.m_sphere_mesh.draw_sphere(shader, particle.position, 0.01);
+        particle.m_sphere_mesh.draw_sphere(shader, particle.position, 0.005);
     }
 //  int num_tris = cloth->clothMesh->triangles.size();
 //

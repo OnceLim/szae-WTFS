@@ -240,9 +240,9 @@ void Cloth::self_collide(PointMass &pm, double simulation_steps) {
         for(PointMass *pm_iter: *map[hash])
         {
             Vector3D diff = pm.position - pm_iter->position;
-            if(pm_iter!=&pm && diff.norm() <= 2 * thickness)
+            if(pm_iter!=&pm && diff.norm() <= 1 * thickness)
             {
-                correction += diff.unit() * (2 * thickness - diff.norm());
+                correction += diff.unit() * (1 * thickness - diff.norm());
                 count++;
             }
         }
