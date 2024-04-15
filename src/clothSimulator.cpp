@@ -396,9 +396,22 @@ void ClothSimulator::drawNormals(GLShader &shader) {
 
 void ClothSimulator::drawPhong(GLShader &shader) {
 
-    for (auto particle : cloth->point_masses) {
-        particle.m_sphere_mesh.draw_sphere(shader, particle.position, 0.005);
-    }
+    int num_points = cloth->point_masses.size();
+    MatrixXf positions(4, num_points);
+
+    for (int i = 0; i < num_points; i++) {
+        Vector3D p1 = cloth->point_masses[i].position;
+        positions.col(i) << p1.x, p1.y, p1.z, 1.0;
+
+    shader.uploadAttrib("in_position", positions, false);
+    shader.drawArray(GL_POINTS, 0, cloth->point_masses.size());
+
+//    for (auto particle : cloth->point_masses) {
+//        particle.m_sphere_mesh.draw_sphere(shader, particle.position, 0.01);
+//    }
+
+
+
 //  int num_tris = cloth->clothMesh->triangles.size();
 //
 //  MatrixXf positions(4, num_tris * 3);
