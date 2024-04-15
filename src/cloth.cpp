@@ -98,7 +98,7 @@ void Cloth::buildGrid() {
 
 
     //Create springs
-
+    /*
     for (int i=0; i<num_height_points; ++i) {
         for (int j=0; j<num_width_points; ++j) {
             int pm_index = i * num_width_points + j;
@@ -135,7 +135,7 @@ void Cloth::buildGrid() {
                 springs.emplace_back(Spring(&point_masses[pm_index], &point_masses[pm_two_above], BENDING));
             }
         }
-    }
+    }*/
 
 }
 
@@ -154,7 +154,7 @@ void Cloth::simulate(double frames_per_sec, double simulation_steps, ClothParame
   for(PointMass &pm: this->point_masses)
       pm.forces = total_external_forces;
 
-
+  /*
   for (Spring &s : springs) {
     if (cp->enable_structural_constraints || cp->enable_shearing_constraints || cp->enable_bending_constraints) {
         double scalar = cp->ks * ((s.pm_a->position - s.pm_b->position).norm() - s.rest_length);
@@ -165,7 +165,7 @@ void Cloth::simulate(double frames_per_sec, double simulation_steps, ClothParame
         s.pm_a->forces += f;
         s.pm_b->forces -= f;
     }
-  }
+  }*/
 
   // TODO (Part 2): Use Verlet integration to compute new point mass positions
 
@@ -196,7 +196,7 @@ void Cloth::simulate(double frames_per_sec, double simulation_steps, ClothParame
 
   // TODO (Part 2): Constrain the changes to be such that the spring does not change
   // in length more than 10% per timestep [Provot 1995].
-
+/*
   for (Spring s : springs) {
       if (cp->enable_bending_constraints || cp->enable_shearing_constraints || cp->enable_structural_constraints) {
           // Check if point masses are pinned
@@ -219,7 +219,7 @@ void Cloth::simulate(double frames_per_sec, double simulation_steps, ClothParame
               s.pm_a->position += correction;
           }
       }
-  }
+  }*/
 
 }
 
