@@ -1,41 +1,41 @@
 # ninja log v5
 38	564	1713070803918924609	ext/nanogui/ext_build/glfw/src/CMakeFiles/glfw_objects.dir/init.c.o	c605b1f75e0e2b7d
 1363	1482	1713070804844043081	CGL/src/CMakeFiles/CGL.dir/tinyxml2.cpp.o	800b34f44617e40f
-1257	1792	1713070805146596102	CGL/src/CMakeFiles/CGL.dir/lodepng.cpp.o	dbaccaf81b79aa82
 9297	9554	1713070812909718405	ext/nanogui/libnanogui.dylib	d653660b15514aae
-687	1245	1713070804604593103	CGL/src/CMakeFiles/CGL.dir/vector2D.cpp.o	ff2b3e6461c2bc65
+1257	1792	1713070805146596102	CGL/src/CMakeFiles/CGL.dir/lodepng.cpp.o	dbaccaf81b79aa82
 1	427	1710456723910283406	/Users/chinzonghan/Documents/Berkeley SP24/CS 184/hw4-clothsim-sp24-coldplay/cmake-build-debug/ext/nanogui/nanogui_resources.cpp	23bbd61700a98b2d
-38	568	1713070803927650978	ext/nanogui/ext_build/glfw/src/CMakeFiles/glfw_objects.dir/input.c.o	f34752c3f60d015a
+687	1245	1713070804604593103	CGL/src/CMakeFiles/CGL.dir/vector2D.cpp.o	ff2b3e6461c2bc65
 38	570	1713070803925715938	ext/nanogui/ext_build/glfw/src/CMakeFiles/glfw_objects.dir/monitor.c.o	ff1a09259a22690c
+38	568	1713070803927650978	ext/nanogui/ext_build/glfw/src/CMakeFiles/glfw_objects.dir/input.c.o	f34752c3f60d015a
+1144	1444	1713070804804034647	CGL/src/CMakeFiles/CGL.dir/complex.cpp.o	7b7a6b595f04f2c7
 37	566	1713070803920198816	ext/nanogui/ext_build/glfw/src/CMakeFiles/glfw_objects.dir/context.c.o	ab4606cec0506bfe
 37	686	1713070804049680570	/Users/chinzonghan/Documents/Berkeley SP24/CS 184/szae-WTFS/cmake-build-debug/ext/nanogui/nanogui_resources.cpp	21c314bba0150693
 37	686	1713070804049680570	ext/nanogui/nanogui_resources.cpp	21c314bba0150693
+1	427	1710456723910283406	/Users/chinzonghan/Documents/Berkeley SP24/CS 184/hw4-clothsim-sp24-coldplay/cmake-build-debug/ext/nanogui/nanogui_resources.h	23bbd61700a98b2d
 871	1244	1713070804604592895	CGL/src/CMakeFiles/CGL.dir/vector3D.cpp.o	429a4ac987915695
 1457	1753	1713070805111507083	src/CMakeFiles/clothsim.dir/clothMesh.cpp.o	3f89a92e726508a8
-1	427	1710456723910283406	/Users/chinzonghan/Documents/Berkeley SP24/CS 184/hw4-clothsim-sp24-coldplay/cmake-build-debug/ext/nanogui/nanogui_resources.h	23bbd61700a98b2d
-1135	1457	1713070804817485514	CGL/src/CMakeFiles/CGL.dir/quaternion.cpp.o	4105c03390842d39
+2472	4061	1713070807415968830	ext/nanogui/CMakeFiles/nanogui-obj.dir/src/glutil.cpp.o	e311b3662e4fb824
+1245	1571	1713070804932002902	CGL/src/CMakeFiles/CGL.dir/spectrum.cpp.o	46805283b2d1c9de
+3496	4565	1713070807919240229	ext/nanogui/CMakeFiles/nanogui-obj.dir/src/window.cpp.o	aa6391b3888f37ae
 39	1028	1713070804380625907	ext/nanogui/ext_build/glfw/src/CMakeFiles/glfw_objects.dir/cocoa_init.m.o	e406dc4e7066cdd5
 4856	5800	1713070809155198509	ext/nanogui/CMakeFiles/nanogui-obj.dir/src/imagepanel.cpp.o	75729e0cbbcec9e2
-3496	4565	1713070807919240229	ext/nanogui/CMakeFiles/nanogui-obj.dir/src/window.cpp.o	aa6391b3888f37ae
+1135	1457	1713070804817485514	CGL/src/CMakeFiles/CGL.dir/quaternion.cpp.o	4105c03390842d39
 1467	2481	1713070805835207804	src/CMakeFiles/clothsim.dir/collision/sphere.cpp.o	1273e9ba062a82cf
 38	558	1713070803913456529	ext/nanogui/ext_build/glfw/src/CMakeFiles/glfw_objects.dir/vulkan.c.o	b47ca625d2f52d37
 2251	3883	1713070807231038610	ext/nanogui/CMakeFiles/nanogui-obj.dir/src/darwin.mm.o	e1ed00841254618
 4149	5110	1713070808467386099	ext/nanogui/CMakeFiles/nanogui-obj.dir/src/combobox.cpp.o	f73eefe8a333d30d
+5864	6596	1713070809955346391	ext/nanogui/CMakeFiles/nanogui-obj.dir/src/tabwidget.cpp.o	74ca0a291b8c5627
+4604	5420	1713070808775859243	ext/nanogui/CMakeFiles/nanogui-obj.dir/src/messagedialog.cpp.o	a5e27e627074505e
+1560	4031	1713070807383248058	src/CMakeFiles/clothsim.dir/clothSimulator.cpp.o	c5610c52820c4dc7
 895	1257	1713070804617483220	CGL/src/CMakeFiles/CGL.dir/vector4D.cpp.o	e6029145635166cd
 4031	4933	1713070808290563374	ext/nanogui/CMakeFiles/nanogui-obj.dir/src/popupbutton.cpp.o	36e1764efb750c03
 1792	2192	1713070805553456353	src/CMakeFiles/clothsim.dir/camera.cpp.o	c955b3a600605a49
-5106	9131	1713070812475639089	ext/nanogui/CMakeFiles/nanogui-obj.dir/src/colorwheel.cpp.o	9e305ff13844267e
-1571	2675	1713070806026851352	src/CMakeFiles/clothsim.dir/misc/sphere_drawing.cpp.o	becc53c582786c94
-1560	4031	1713070807383248058	src/CMakeFiles/clothsim.dir/clothSimulator.cpp.o	c5610c52820c4dc7
-5864	6596	1713070809955346391	ext/nanogui/CMakeFiles/nanogui-obj.dir/src/tabwidget.cpp.o	74ca0a291b8c5627
-4604	5420	1713070808775859243	ext/nanogui/CMakeFiles/nanogui-obj.dir/src/messagedialog.cpp.o	a5e27e627074505e
 38	571	1713070803924931022	ext/nanogui/ext_build/glfw/src/CMakeFiles/glfw_objects.dir/window.c.o	ddad38e714ee668c
 1245	1560	1713070804919988242	CGL/src/CMakeFiles/CGL.dir/base64.cpp.o	edcdbc1ca4289a68
 1133	1467	1713070804827339258	CGL/src/CMakeFiles/CGL.dir/matrix4x4.cpp.o	58be2ae8d3b14ae1
 1753	2184	1713070805544705400	src/CMakeFiles/clothsim.dir/misc/file_utils.cpp.o	a0853b6635efdce6
-2193	2250	1713070805613482232	ext/nanogui/CMakeFiles/nanogui-obj.dir/ext/glad/src/glad.c.o	a4a60a8593457d31
 2768	3601	1713070806958520778	ext/nanogui/CMakeFiles/nanogui-obj.dir/src/layout.cpp.o	4a7aac7e9e1dd9cc
-1144	1444	1713070804804034647	CGL/src/CMakeFiles/CGL.dir/complex.cpp.o	7b7a6b595f04f2c7
+2193	2250	1713070805613482232	ext/nanogui/CMakeFiles/nanogui-obj.dir/ext/glad/src/glad.c.o	a4a60a8593457d31
 9554	9595	1713070812960025000	CGL/src/libCGL.a	2003696f3a2aac62
 1482	2768	1713070806125188792	src/CMakeFiles/clothsim.dir/collision/plane.cpp.o	66531233954be42
 9595	9711	1713070813073495888	clothsim	687afaa50b3587ad
@@ -45,8 +45,6 @@
 1028	1363	1713070804721631615	CGL/src/CMakeFiles/CGL.dir/matrix3x3.cpp.o	fc62fd3cfdbdb29f
 2730	3653	1713070807006990499	ext/nanogui/CMakeFiles/nanogui-obj.dir/src/widget.cpp.o	d5d8b4f1f024a406
 570	871	1713070804228833084	ext/nanogui/ext_build/glfw/src/CMakeFiles/glfw_objects.dir/posix_tls.c.o	5b23c4855f9cd00d
-2472	4061	1713070807415968830	ext/nanogui/CMakeFiles/nanogui-obj.dir/src/glutil.cpp.o	e311b3662e4fb824
-1245	1571	1713070804932002902	CGL/src/CMakeFiles/CGL.dir/spectrum.cpp.o	46805283b2d1c9de
 564	1143	1713070804500716875	ext/nanogui/ext_build/glfw/src/CMakeFiles/glfw_objects.dir/cocoa_monitor.m.o	73c55553bddc5062
 5127	6208	1713070809565134965	ext/nanogui/CMakeFiles/nanogui-obj.dir/src/colorpicker.cpp.o	605c20aa965083bb
 3192	4290	1713070807645784356	ext/nanogui/CMakeFiles/nanogui-obj.dir/src/screen.cpp.o	7fc5ab65b4e776d2
@@ -56,6 +54,8 @@
 4306	5093	1713070808451872400	ext/nanogui/CMakeFiles/nanogui-obj.dir/src/progressbar.cpp.o	3ed45bd00a7641f3
 37	686	1713070804049680570	ext/nanogui/nanogui_resources.h	21c314bba0150693
 6053	7055	1713070810412567526	ext/nanogui/CMakeFiles/nanogui-obj.dir/src/glcanvas.cpp.o	f49604ebfcffa307
+5106	9131	1713070812475639089	ext/nanogui/CMakeFiles/nanogui-obj.dir/src/colorwheel.cpp.o	9e305ff13844267e
+1571	2675	1713070806026851352	src/CMakeFiles/clothsim.dir/misc/sphere_drawing.cpp.o	becc53c582786c94
 3925	4959	1713070808315947317	ext/nanogui/CMakeFiles/nanogui-obj.dir/src/button.cpp.o	73ee83d1601cc77a
 4966	5859	1713070809216920096	ext/nanogui/CMakeFiles/nanogui-obj.dir/src/vscrollpanel.cpp.o	70b66a77e4068506
 5432	6179	1713070809536928941	ext/nanogui/CMakeFiles/nanogui-obj.dir/src/stackedwidget.cpp.o	2f6d4498dc481cf6
@@ -69,8 +69,8 @@
 558	1135	1713070804491038047	ext/nanogui/ext_build/glfw/src/CMakeFiles/glfw_objects.dir/cocoa_joystick.m.o	63b30d1b4ab775e5
 2675	3483	1713070806838373894	ext/nanogui/CMakeFiles/nanogui-obj.dir/src/common.cpp.o	4aab979e57c97224
 6185	6937	1713070810295934390	ext/nanogui/CMakeFiles/nanogui-obj.dir/src/serializer.cpp.o	a1e34a64f525fde6
-566	1169	1713070804527815233	ext/nanogui/ext_build/glfw/src/CMakeFiles/glfw_objects.dir/cocoa_window.m.o	34acb00f48093a97
-1445	2752	1713070806108931302	src/CMakeFiles/clothsim.dir/cloth.cpp.o	86b1742e7f10cea7
 3726	4819	1713070808174833779	ext/nanogui/CMakeFiles/nanogui-obj.dir/src/checkbox.cpp.o	9bb9ae6ff97a77f2
+1445	2752	1713070806108931302	src/CMakeFiles/clothsim.dir/cloth.cpp.o	86b1742e7f10cea7
+566	1169	1713070804527815233	ext/nanogui/ext_build/glfw/src/CMakeFiles/glfw_objects.dir/cocoa_window.m.o	34acb00f48093a97
 571	1133	1713070804488033591	ext/nanogui/ext_build/glfw/src/CMakeFiles/glfw_objects.dir/nsgl_context.m.o	a48d8d13b1457bd3
 37	686	1713070804049680570	/Users/chinzonghan/Documents/Berkeley SP24/CS 184/szae-WTFS/cmake-build-debug/ext/nanogui/nanogui_resources.h	21c314bba0150693
