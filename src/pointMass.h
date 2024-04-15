@@ -32,6 +32,7 @@ struct PointMass {
   // mesh reference
   Halfedge *halfedge;
 
+  // Draw pointmasses as spheres
   Misc::SphereMesh m_sphere_mesh;
 };
 

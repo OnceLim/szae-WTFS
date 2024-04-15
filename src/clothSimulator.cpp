@@ -361,35 +361,37 @@ void ClothSimulator::drawWireframe(GLShader &shader) {
 }
 
 void ClothSimulator::drawNormals(GLShader &shader) {
-  int num_tris = cloth->clothMesh->triangles.size();
+    int num_points = cloth->point_masses.size();
+//
+    MatrixXf positions(4, num_points);
+//  MatrixXf normals(4, num_tris * 3);
+//
+    for (int i = 0; i < num_points; i++) {
+//    Triangle *tri = cloth->clothMesh->triangles[i];
 
-  MatrixXf positions(4, num_tris * 3);
-  MatrixXf normals(4, num_tris * 3);
+        Vector3D p1 = cloth->point_masses[i].position;
+//    Vector3D p2 = tri->pm2->position;
+//    Vector3D p3 = tri->pm3->position;
+//
+//    Vector3D n1 = tri->pm1->normal();
+//    Vector3D n2 = tri->pm2->normal();
+//    Vector3D n3 = tri->pm3->normal();
 
-  for (int i = 0; i < num_tris; i++) {
-    Triangle *tri = cloth->clothMesh->triangles[i];
+        positions.col(i) << p1.x, p1.y, p1.z, 1.0;
+//    positions.col(i * 3 + 1) << p2.x, p2.y, p2.z, 1.0;
+//    positions.col(i * 3 + 2) << p3.x, p3.y, p3.z, 1.0;
+//
+//    normals.col(i * 3) << n1.x, n1.y, n1.z, 0.0;
+//    normals.col(i * 3 + 1) << n2.x, n2.y, n2.z, 0.0;
+//    normals.col(i * 3 + 2) << n3.x, n3.y, n3.z, 0.0;
+    }
 
-    Vector3D p1 = tri->pm1->position;
-    Vector3D p2 = tri->pm2->position;
-    Vector3D p3 = tri->pm3->position;
+//  shader.uploadAttrib("in_position", positions, false);
+//  shader.uploadAttrib("in_normal", normals, false);
 
-    Vector3D n1 = tri->pm1->normal();
-    Vector3D n2 = tri->pm2->normal();
-    Vector3D n3 = tri->pm3->normal();
 
-    positions.col(i * 3) << p1.x, p1.y, p1.z, 1.0;
-    positions.col(i * 3 + 1) << p2.x, p2.y, p2.z, 1.0;
-    positions.col(i * 3 + 2) << p3.x, p3.y, p3.z, 1.0;
-
-    normals.col(i * 3) << n1.x, n1.y, n1.z, 0.0;
-    normals.col(i * 3 + 1) << n2.x, n2.y, n2.z, 0.0;
-    normals.col(i * 3 + 2) << n3.x, n3.y, n3.z, 0.0;
-  }
-
-  shader.uploadAttrib("in_position", positions, false);
-  shader.uploadAttrib("in_normal", normals, false);
-
-  shader.drawArray(GL_TRIANGLES, 0, num_tris * 3);
+    shader.uploadAttrib("in_position", positions, false);
+    shader.drawArray(GL_POINTS, 0, cloth->point_masses.size());
 }
 
 void ClothSimulator::drawPhong(GLShader &shader) {
