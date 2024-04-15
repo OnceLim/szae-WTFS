@@ -236,31 +236,31 @@
 			[
 				{
 					"backtrace" : 8,
-					"path" : "/Users/chinzonghan/Documents/Berkeley SP24/CS 184/hw4-clothsim-sp24-coldplay/ext/nanogui/ext/glad/include"
+					"path" : "/Users/chinzonghan/Documents/Berkeley SP24/CS 184/szae-WTFS/ext/nanogui/ext/glad/include"
 				},
 				{
 					"backtrace" : 9,
-					"path" : "/Users/chinzonghan/Documents/Berkeley SP24/CS 184/hw4-clothsim-sp24-coldplay/ext/nanogui/ext/eigen"
+					"path" : "/Users/chinzonghan/Documents/Berkeley SP24/CS 184/szae-WTFS/ext/nanogui/ext/eigen"
 				},
 				{
 					"backtrace" : 9,
-					"path" : "/Users/chinzonghan/Documents/Berkeley SP24/CS 184/hw4-clothsim-sp24-coldplay/ext/nanogui/ext/glfw/include"
+					"path" : "/Users/chinzonghan/Documents/Berkeley SP24/CS 184/szae-WTFS/ext/nanogui/ext/glfw/include"
 				},
 				{
 					"backtrace" : 9,
-					"path" : "/Users/chinzonghan/Documents/Berkeley SP24/CS 184/hw4-clothsim-sp24-coldplay/ext/nanogui/ext/nanovg/src"
+					"path" : "/Users/chinzonghan/Documents/Berkeley SP24/CS 184/szae-WTFS/ext/nanogui/ext/nanovg/src"
 				},
 				{
 					"backtrace" : 9,
-					"path" : "/Users/chinzonghan/Documents/Berkeley SP24/CS 184/hw4-clothsim-sp24-coldplay/ext/nanogui/include"
+					"path" : "/Users/chinzonghan/Documents/Berkeley SP24/CS 184/szae-WTFS/ext/nanogui/include"
 				},
 				{
 					"backtrace" : 9,
-					"path" : "/Users/chinzonghan/Documents/Berkeley SP24/CS 184/hw4-clothsim-sp24-coldplay/cmake-build-debug/ext/nanogui"
+					"path" : "/Users/chinzonghan/Documents/Berkeley SP24/CS 184/szae-WTFS/cmake-build-debug/ext/nanogui"
 				},
 				{
 					"backtrace" : 10,
-					"path" : "/Users/chinzonghan/Documents/Berkeley SP24/CS 184/hw4-clothsim-sp24-coldplay/ext/nanogui/ext/coro"
+					"path" : "/Users/chinzonghan/Documents/Berkeley SP24/CS 184/szae-WTFS/ext/nanogui/ext/coro"
 				}
 			],
 			"language" : "C",
@@ -324,31 +324,31 @@
 			[
 				{
 					"backtrace" : 8,
-					"path" : "/Users/chinzonghan/Documents/Berkeley SP24/CS 184/hw4-clothsim-sp24-coldplay/ext/nanogui/ext/glad/include"
+					"path" : "/Users/chinzonghan/Documents/Berkeley SP24/CS 184/szae-WTFS/ext/nanogui/ext/glad/include"
 				},
 				{
 					"backtrace" : 9,
-					"path" : "/Users/chinzonghan/Documents/Berkeley SP24/CS 184/hw4-clothsim-sp24-coldplay/ext/nanogui/ext/eigen"
+					"path" : "/Users/chinzonghan/Documents/Berkeley SP24/CS 184/szae-WTFS/ext/nanogui/ext/eigen"
 				},
 				{
 					"backtrace" : 9,
-					"path" : "/Users/chinzonghan/Documents/Berkeley SP24/CS 184/hw4-clothsim-sp24-coldplay/ext/nanogui/ext/glfw/include"
+					"path" : "/Users/chinzonghan/Documents/Berkeley SP24/CS 184/szae-WTFS/ext/nanogui/ext/glfw/include"
 				},
 				{
 					"backtrace" : 9,
-					"path" : "/Users/chinzonghan/Documents/Berkeley SP24/CS 184/hw4-clothsim-sp24-coldplay/ext/nanogui/ext/nanovg/src"
+					"path" : "/Users/chinzonghan/Documents/Berkeley SP24/CS 184/szae-WTFS/ext/nanogui/ext/nanovg/src"
 				},
 				{
 					"backtrace" : 9,
-					"path" : "/Users/chinzonghan/Documents/Berkeley SP24/CS 184/hw4-clothsim-sp24-coldplay/ext/nanogui/include"
+					"path" : "/Users/chinzonghan/Documents/Berkeley SP24/CS 184/szae-WTFS/ext/nanogui/include"
 				},
 				{
 					"backtrace" : 9,
-					"path" : "/Users/chinzonghan/Documents/Berkeley SP24/CS 184/hw4-clothsim-sp24-coldplay/cmake-build-debug/ext/nanogui"
+					"path" : "/Users/chinzonghan/Documents/Berkeley SP24/CS 184/szae-WTFS/cmake-build-debug/ext/nanogui"
 				},
 				{
 					"backtrace" : 10,
-					"path" : "/Users/chinzonghan/Documents/Berkeley SP24/CS 184/hw4-clothsim-sp24-coldplay/ext/nanogui/ext/coro"
+					"path" : "/Users/chinzonghan/Documents/Berkeley SP24/CS 184/szae-WTFS/ext/nanogui/ext/coro"
 				}
 			],
 			"language" : "CXX",

@@ -4,6 +4,7 @@
 #include "CGL/CGL.h"
 #include "CGL/misc.h"
 #include "CGL/vector3D.h"
+#include "misc/sphere_drawing.h"
 
 using namespace CGL;
 
@@ -30,6 +31,8 @@ struct PointMass {
 
   // mesh reference
   Halfedge *halfedge;
+
+  Misc::SphereMesh m_sphere_mesh;
 };
 
 #endif /* POINTMASS_H */

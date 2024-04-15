@@ -1,4 +1,4 @@
-/Applications/CLion.app/Contents/bin/cmake/mac/aarch64/bin/cmake -DCMAKE_BUILD_TYPE=Debug -DCMAKE_MAKE_PROGRAM=/Applications/CLion.app/Contents/bin/ninja/mac/aarch64/ninja -G Ninja -S "/Users/chinzonghan/Documents/Berkeley SP24/CS 184/hw4-clothsim-sp24-coldplay" -B "/Users/chinzonghan/Documents/Berkeley SP24/CS 184/hw4-clothsim-sp24-coldplay/cmake-build-debug"
+/Applications/CLion.app/Contents/bin/cmake/mac/aarch64/bin/cmake -DCMAKE_BUILD_TYPE=Debug -DCMAKE_MAKE_PROGRAM=/Applications/CLion.app/Contents/bin/ninja/mac/aarch64/ninja -G Ninja -S "/Users/chinzonghan/Documents/Berkeley SP24/CS 184/szae-WTFS" -B "/Users/chinzonghan/Documents/Berkeley SP24/CS 184/szae-WTFS/cmake-build-debug"
 CMake Deprecation Warning at CMakeLists.txt:1 (cmake_minimum_required):
   Compatibility with CMake < 3.5 will be removed from a future version of
   CMake.
@@ -49,6 +49,6 @@ CMake Deprecation Warning at src/CMakeLists.txt:1 (cmake_minimum_required):
   CMake that the project does not need compatibility with older versions.
 
 
--- Configuring done (0.6s)
--- Generating done (0.1s)
--- Build files have been written to: /Users/chinzonghan/Documents/Berkeley SP24/CS 184/hw4-clothsim-sp24-coldplay/cmake-build-debug
+-- Configuring done (0.4s)
+-- Generating done (0.0s)
+-- Build files have been written to: /Users/chinzonghan/Documents/Berkeley SP24/CS 184/szae-WTFS/cmake-build-debug

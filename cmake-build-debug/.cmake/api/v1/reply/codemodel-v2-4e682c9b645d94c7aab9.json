@@ -37,8 +37,8 @@
 					"source" : "ext/nanogui",
 					"targetIndexes" : 
 					[
-						4,
-						5
+						3,
+						4
 					]
 				},
 				{
@@ -68,8 +68,8 @@
 					"source" : "ext/nanogui/ext/glfw/src",
 					"targetIndexes" : 
 					[
-						2,
-						3
+						1,
+						2
 					]
 				},
 				{
@@ -107,7 +107,7 @@
 				{
 					"build" : "src",
 					"hasInstallRule" : true,
-					"jsonFile" : "directory-src-Debug-43e0d1be156a430a6777.json",
+					"jsonFile" : "directory-src-Debug-0e410f99890ab495c947.json",
 					"minimumCMakeVersion" : 
 					{
 						"string" : "2.8"
@@ -117,7 +117,7 @@
 					"source" : "src",
 					"targetIndexes" : 
 					[
-						1
+						5
 					]
 				}
 			],
@@ -138,7 +138,7 @@
 					"name" : "ClothSim",
 					"targetIndexes" : 
 					[
-						1
+						5
 					]
 				},
 				{
@@ -154,8 +154,8 @@
 					"parentIndex" : 0,
 					"targetIndexes" : 
 					[
-						4,
-						5
+						3,
+						4
 					]
 				},
 				{
@@ -168,8 +168,8 @@
 					"parentIndex" : 1,
 					"targetIndexes" : 
 					[
-						2,
-						3
+						1,
+						2
 					]
 				},
 				{
@@ -191,16 +191,9 @@
 				{
 					"directoryIndex" : 5,
 					"id" : "CGL::@471a8420bb23f6744067",
-					"jsonFile" : "target-CGL-Debug-b305c137b1a97006d464.json",
+					"jsonFile" : "target-CGL-Debug-0cdea1999213e5c79a1e.json",
 					"name" : "CGL",
 					"projectIndex" : 3
-				},
-				{
-					"directoryIndex" : 6,
-					"id" : "clothsim::@145eef247bfb46b6828c",
-					"jsonFile" : "target-clothsim-Debug-5c37b674d5da613d8fa0.json",
-					"name" : "clothsim",
-					"projectIndex" : 0
 				},
 				{
 					"directoryIndex" : 3,
@@ -212,7 +205,7 @@
 				{
 					"directoryIndex" : 3,
 					"id" : "glfw_objects::@05f448bf7d78af58ae8d",
-					"jsonFile" : "target-glfw_objects-Debug-1b2c6fc6bdee7e7dd85e.json",
+					"jsonFile" : "target-glfw_objects-Debug-2c1ac0d55a74c810ef3b.json",
 					"name" : "glfw_objects",
 					"projectIndex" : 2
 				},
@@ -226,9 +219,16 @@
 				{
 					"directoryIndex" : 1,
 					"id" : "nanogui-obj::@f32fc89d7586c0a8572c",
-					"jsonFile" : "target-nanogui-obj-Debug-f2d2e67ecbd1a5d36ccf.json",
+					"jsonFile" : "target-nanogui-obj-Debug-2d41fca4b0e58098bcaa.json",
 					"name" : "nanogui-obj",
 					"projectIndex" : 1
+				},
+				{
+					"directoryIndex" : 6,
+					"id" : "windsim::@145eef247bfb46b6828c",
+					"jsonFile" : "target-windsim-Debug-c44d55803b828c08ed43.json",
+					"name" : "windsim",
+					"projectIndex" : 0
 				}
 			]
 		}
@@ -236,8 +236,8 @@
 	"kind" : "codemodel",
 	"paths" : 
 	{
-		"build" : "/Users/chinzonghan/Documents/Berkeley SP24/CS 184/hw4-clothsim-sp24-coldplay/cmake-build-debug",
-		"source" : "/Users/chinzonghan/Documents/Berkeley SP24/CS 184/hw4-clothsim-sp24-coldplay"
+		"build" : "/Users/chinzonghan/Documents/Berkeley SP24/CS 184/szae-WTFS/cmake-build-debug",
+		"source" : "/Users/chinzonghan/Documents/Berkeley SP24/CS 184/szae-WTFS"
 	},
 	"version" : 
 	{

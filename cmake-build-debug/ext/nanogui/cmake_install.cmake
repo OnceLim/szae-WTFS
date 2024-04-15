@@ -1,4 +1,4 @@
-# Install script for directory: /Users/chinzonghan/Documents/Berkeley SP24/CS 184/hw4-clothsim-sp24-coldplay/ext/nanogui
+# Install script for directory: /Users/chinzonghan/Documents/Berkeley SP24/CS 184/szae-WTFS/ext/nanogui
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -39,7 +39,7 @@ endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for each subdirectory.
-  include("/Users/chinzonghan/Documents/Berkeley SP24/CS 184/hw4-clothsim-sp24-coldplay/cmake-build-debug/ext/nanogui/ext_build/glfw/cmake_install.cmake")
+  include("/Users/chinzonghan/Documents/Berkeley SP24/CS 184/szae-WTFS/cmake-build-debug/ext/nanogui/ext_build/glfw/cmake_install.cmake")
 
 endif()
 

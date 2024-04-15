@@ -59,7 +59,7 @@
 				}
 			],
 			"type" : "STATIC",
-			"value" : "/Users/chinzonghan/Documents/Berkeley SP24/CS 184/hw4-clothsim-sp24-coldplay/cmake-build-debug/CGL"
+			"value" : "/Users/chinzonghan/Documents/Berkeley SP24/CS 184/szae-WTFS/cmake-build-debug/CGL"
 		},
 		{
 			"name" : "CGL_BUILD_DEBUG",
@@ -155,7 +155,7 @@
 				}
 			],
 			"type" : "STATIC",
-			"value" : "/Users/chinzonghan/Documents/Berkeley SP24/CS 184/hw4-clothsim-sp24-coldplay/CGL"
+			"value" : "/Users/chinzonghan/Documents/Berkeley SP24/CS 184/szae-WTFS/CGL"
 		},
 		{
 			"name" : "CMAKE_ADDR2LINE",
@@ -211,7 +211,7 @@
 				}
 			],
 			"type" : "INTERNAL",
-			"value" : "/Users/chinzonghan/Documents/Berkeley SP24/CS 184/hw4-clothsim-sp24-coldplay/cmake-build-debug"
+			"value" : "/Users/chinzonghan/Documents/Berkeley SP24/CS 184/szae-WTFS/cmake-build-debug"
 		},
 		{
 			"name" : "CMAKE_CACHE_MAJOR_VERSION",
@@ -635,7 +635,7 @@
 				}
 			],
 			"type" : "STATIC",
-			"value" : "/Users/chinzonghan/Documents/Berkeley SP24/CS 184/hw4-clothsim-sp24-coldplay/cmake-build-debug/CMakeFiles/pkgRedirects"
+			"value" : "/Users/chinzonghan/Documents/Berkeley SP24/CS 184/szae-WTFS/cmake-build-debug/CMakeFiles/pkgRedirects"
 		},
 		{
 			"name" : "CMAKE_GENERATOR",
@@ -707,7 +707,7 @@
 				}
 			],
 			"type" : "INTERNAL",
-			"value" : "/Users/chinzonghan/Documents/Berkeley SP24/CS 184/hw4-clothsim-sp24-coldplay"
+			"value" : "/Users/chinzonghan/Documents/Berkeley SP24/CS 184/szae-WTFS"
 		},
 		{
 			"name" : "CMAKE_INSTALL_NAME_TOOL",
@@ -1343,7 +1343,7 @@
 				}
 			],
 			"type" : "STATIC",
-			"value" : "/Users/chinzonghan/Documents/Berkeley SP24/CS 184/hw4-clothsim-sp24-coldplay/cmake-build-debug"
+			"value" : "/Users/chinzonghan/Documents/Berkeley SP24/CS 184/szae-WTFS/cmake-build-debug"
 		},
 		{
 			"name" : "ClothSim_IS_TOP_LEVEL",
@@ -1367,7 +1367,7 @@
 				}
 			],
 			"type" : "STATIC",
-			"value" : "/Users/chinzonghan/Documents/Berkeley SP24/CS 184/hw4-clothsim-sp24-coldplay"
+			"value" : "/Users/chinzonghan/Documents/Berkeley SP24/CS 184/szae-WTFS"
 		},
 		{
 			"name" : "FIND_PACKAGE_MESSAGE_DETAILS_Freetype",
@@ -1479,7 +1479,7 @@
 				}
 			],
 			"type" : "STATIC",
-			"value" : "/Users/chinzonghan/Documents/Berkeley SP24/CS 184/hw4-clothsim-sp24-coldplay/cmake-build-debug/ext/nanogui/ext_build/glfw"
+			"value" : "/Users/chinzonghan/Documents/Berkeley SP24/CS 184/szae-WTFS/cmake-build-debug/ext/nanogui/ext_build/glfw"
 		},
 		{
 			"name" : "GLFW_BUILD_DOCS",
@@ -1575,7 +1575,7 @@
 				}
 			],
 			"type" : "STATIC",
-			"value" : "/Users/chinzonghan/Documents/Berkeley SP24/CS 184/hw4-clothsim-sp24-coldplay/ext/nanogui/ext/glfw"
+			"value" : "/Users/chinzonghan/Documents/Berkeley SP24/CS 184/szae-WTFS/ext/nanogui/ext/glfw"
 		},
 		{
 			"name" : "GLFW_USE_CHDIR",
@@ -1819,7 +1819,7 @@
 				}
 			],
 			"type" : "STATIC",
-			"value" : "/Users/chinzonghan/Documents/Berkeley SP24/CS 184/hw4-clothsim-sp24-coldplay/cmake-build-debug/ext/nanogui"
+			"value" : "/Users/chinzonghan/Documents/Berkeley SP24/CS 184/szae-WTFS/cmake-build-debug/ext/nanogui"
 		},
 		{
 			"name" : "NanoGUI_IS_TOP_LEVEL",
@@ -1843,7 +1843,7 @@
 				}
 			],
 			"type" : "STATIC",
-			"value" : "/Users/chinzonghan/Documents/Berkeley SP24/CS 184/hw4-clothsim-sp24-coldplay/ext/nanogui"
+			"value" : "/Users/chinzonghan/Documents/Berkeley SP24/CS 184/szae-WTFS/ext/nanogui"
 		},
 		{
 			"name" : "OPENGL_INCLUDE_DIR",

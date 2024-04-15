@@ -130,15 +130,15 @@
 			[
 				{
 					"backtrace" : 5,
-					"path" : "/Users/chinzonghan/Documents/Berkeley SP24/CS 184/hw4-clothsim-sp24-coldplay/ext/nanogui/ext/glfw/include"
+					"path" : "/Users/chinzonghan/Documents/Berkeley SP24/CS 184/szae-WTFS/ext/nanogui/ext/glfw/include"
 				},
 				{
 					"backtrace" : 6,
-					"path" : "/Users/chinzonghan/Documents/Berkeley SP24/CS 184/hw4-clothsim-sp24-coldplay/ext/nanogui/ext/glfw/src"
+					"path" : "/Users/chinzonghan/Documents/Berkeley SP24/CS 184/szae-WTFS/ext/nanogui/ext/glfw/src"
 				},
 				{
 					"backtrace" : 6,
-					"path" : "/Users/chinzonghan/Documents/Berkeley SP24/CS 184/hw4-clothsim-sp24-coldplay/cmake-build-debug/ext/nanogui/ext_build/glfw/src"
+					"path" : "/Users/chinzonghan/Documents/Berkeley SP24/CS 184/szae-WTFS/cmake-build-debug/ext/nanogui/ext_build/glfw/src"
 				}
 			],
 			"language" : "C",

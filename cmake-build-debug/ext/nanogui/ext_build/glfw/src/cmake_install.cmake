@@ -1,4 +1,4 @@
-# Install script for directory: /Users/chinzonghan/Documents/Berkeley SP24/CS 184/hw4-clothsim-sp24-coldplay/ext/nanogui/ext/glfw/src
+# Install script for directory: /Users/chinzonghan/Documents/Berkeley SP24/CS 184/szae-WTFS/ext/nanogui/ext/glfw/src
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)

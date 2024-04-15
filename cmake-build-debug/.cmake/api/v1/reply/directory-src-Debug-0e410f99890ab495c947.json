@@ -27,13 +27,13 @@
 		{
 			"backtrace" : 1,
 			"component" : "Unspecified",
-			"destination" : "/Users/chinzonghan/Documents/Berkeley SP24/CS 184/hw4-clothsim-sp24-coldplay",
+			"destination" : "bin",
 			"paths" : 
 			[
-				"clothsim"
+				"windsim"
 			],
-			"targetId" : "clothsim::@145eef247bfb46b6828c",
-			"targetIndex" : 1,
+			"targetId" : "windsim::@145eef247bfb46b6828c",
+			"targetIndex" : 5,
 			"type" : "target"
 		}
 	],
