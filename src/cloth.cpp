@@ -59,19 +59,8 @@ void Cloth::buildGrid() {
     if (orientation == HORIZONTAL) {
         for (int i=0; i<num_height_points; ++i) {
             for (int j=0; j<num_width_points; ++j) {
-//                Vector3D pos = Vector3D(width_start+j*width_diff, 1, height_start+i*height_diff);
-                Vector3D pos = Vector3D(width_start+j*width_diff, 1, height_start+i*height_diff);
-                bool pinBool = true;
-                
-                if (pinned.empty()) {
-                    pinBool = false;
-                } else if (!(pos.x >= pinned[0][0] && pos.x <= pinned[1][0])) {
-                    pinBool =  false;
-                } else if (!(pos.y >= pinned[0][1] && pos.y <= pinned[1][1])) {
-                    pinBool = false;
-                }
-                std::cout <<pinBool<< std::endl;
-                PointMass pm = PointMass(pos, pinBool);
+                Vector3D pos = Vector3D(width_start+j*width_diff, 1, height_start+i*height_diff);                
+                PointMass pm = PointMass(pos, Vector3D(0, 0, 0));
                 point_masses.emplace_back(pm);
             }
         }
@@ -91,10 +80,10 @@ void Cloth::buildGrid() {
         }
     }
 
-    for (vector<int> coordo : pinned) {
-        std::cout <<"Hello"<< std::endl;
-        point_masses[coordo[1] * num_width_points + coordo[0]].pinned = true;
-    }
+    // for (vector<int> coordo : pinned) {
+    //     std::cout <<"Hello"<< std::endl;
+    //     point_masses[coordo[1] * num_width_points + coordo[0]].pinned = true;
+    // }
 
 
     //Create springs
@@ -170,13 +159,13 @@ void Cloth::simulate(double frames_per_sec, double simulation_steps, ClothParame
   // TODO (Part 2): Use Verlet integration to compute new point mass positions
 
   for (PointMass &pm : point_masses) {
-    if (!pm.pinned) {
+    // if (!pm.pinned) {
         Vector3D curr_pos = pm.position;
         Vector3D last_pos = pm.last_position;
         Vector3D accel = pm.forces / mass;
         pm.position = curr_pos + (double)(1.0f - cp->damping / 100.0f) * (curr_pos - last_pos) + accel * pow(delta_t, 2);
         pm.last_position = curr_pos;
-    }
+    // }
   }
 
 
