@@ -14,7 +14,7 @@ using namespace CGL;
 //    return dot(point - pos, normal) / dot(normal, normal);
 //}
 
-void Plane::collide(PointMass &pm) {
+void Plane::collide(PointMass &pm, double delta_t) {
   // TODO (Part 3): Handle collisions with planes.
     
     if (dot(point - pm.position, normal) * dot(point - pm.last_position, normal) > 0.0) {
