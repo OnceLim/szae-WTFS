@@ -18,7 +18,7 @@ Cloth::Cloth(double width, double height, int num_width_points,
   this->thickness = thickness;
 
   buildGrid();
-  buildClothMesh();
+  //buildClothMesh();
 }
 
 Cloth::~Cloth() {
@@ -280,10 +280,10 @@ void Cloth::reset() {
     pm++;
   }
 }
-
+/*
 void Cloth::buildClothMesh() {
   if (point_masses.size() == 0) return;
-
+  return;
   ClothMesh *clothMesh = new ClothMesh();
   vector<Triangle *> triangles;
 
@@ -304,7 +304,7 @@ void Cloth::buildClothMesh() {
        *      /               *
        * pm_C -------- pm_D   *
        *                      *
-       */
+       MAKE END COMMENT
       
       float u_min = x;
       u_min /= num_width_points - 1;
@@ -431,4 +431,4 @@ void Cloth::buildClothMesh() {
 
   clothMesh->triangles = triangles;
   this->clothMesh = clothMesh;
-}
+}*/

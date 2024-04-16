@@ -54,7 +54,7 @@ struct Cloth {
                 vector<CollisionObject *> *collision_objects);
 
   void reset();
-  void buildClothMesh();
+  //void buildClothMesh();
 
   void build_spatial_map();
   void self_collide(PointMass &pm, double simulation_steps);
