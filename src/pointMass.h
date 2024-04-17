@@ -10,6 +10,8 @@ using namespace CGL;
 
 // Forward declarations
 class Halfedge;
+static float GAS_K = 0.1f;
+static float DENSITY_OFFSET = 100;
 
 struct PointMass {
   PointMass(Vector3D position, Vector3D color)
@@ -19,6 +21,10 @@ struct PointMass {
   Vector3D normal();
   Vector3D velocity(double delta_t) {
     return (position - last_position) / delta_t;
+  }
+
+  void updatePressure() {
+      this->pressure = GAS_K * (this->density - DENSITY_OFFSET);
   }
 
   Vector3D start_position;
