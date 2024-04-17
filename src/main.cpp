@@ -488,7 +488,7 @@ int main(int argc, char **argv) {
   // Attach callbacks to the GLFW window
 
   setGLFWCallbacks();
-
+  int i = 0;
   while (!glfwWindowShouldClose(window)) {
     glfwPollEvents();
 
@@ -496,7 +496,9 @@ int main(int argc, char **argv) {
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
     app->drawContents();
-
+    if (i % 50 == 49) {
+      cloth.buildGrid();
+    }
     // Draw nanogui
     screen->drawContents();
     screen->drawWidgets();
@@ -506,6 +508,7 @@ int main(int argc, char **argv) {
     if (!app->isAlive()) {
       glfwSetWindowShouldClose(window, 1);
     }
+    i++;
   }
 
   return 0;

@@ -16,7 +16,6 @@ Cloth::Cloth(double width, double height, int num_width_points,
   this->num_width_points = num_width_points;
   this->num_height_points = num_height_points;
   this->thickness = thickness;
-
   buildGrid();
   buildClothMesh();
 }
@@ -79,53 +78,42 @@ void Cloth::buildGrid() {
             y += height_diff;
         }
     }
+}
 
-    // for (vector<int> coordo : pinned) {
-    //     std::cout <<"Hello"<< std::endl;
-    //     point_masses[coordo[1] * num_width_points + coordo[0]].pinned = true;
-    // }
+void Cloth::addGrid() {
+    if (num_width_points == 0 || num_height_points == 0) {
+        return;
+    }
 
+    double width_diff = width/(double) (num_width_points - 1);
+    double height_diff = height/(double) (num_height_points - 1);
+    double width_start = width_diff/2;
+    double height_start = height_diff/2;
 
-    //Create springs
-    /*
-    for (int i=0; i<num_height_points; ++i) {
-        for (int j=0; j<num_width_points; ++j) {
-            int pm_index = i * num_width_points + j;
-            int pm_index_left = pm_index - 1;
-            int pm_index_up = (i-1) * num_width_points + j;
-            int pm_index_diag_up_left = (i-1) * num_width_points + (j-1);
-            int pm_index_diag_up_right = (i-1) * num_width_points + (j+1);
-            int pm_two_left = pm_index - 2;
-            int pm_two_above = (i-2) * num_width_points + j;
-
-            bool edge_up = (i==0);
-            bool edge_left = (j==0);
-            bool edge_down = (i==num_height_points-1);
-            bool edge_right = (j==num_width_points-1);
-            bool edge_left_2 = (j==0 || j == 1);
-            bool edge_up_2 = (i==0 || i == 1);
-
-            if (!edge_left) {
-                springs.emplace_back(Spring(&point_masses[pm_index], &point_masses[pm_index_left], STRUCTURAL));
-            }
-            if (!edge_up) {
-                springs.emplace_back(Spring(&point_masses[pm_index], &point_masses[pm_index_up], STRUCTURAL));
-            }
-            if (!edge_left && !edge_up) {
-                springs.emplace_back(Spring(&point_masses[pm_index], &point_masses[pm_index_diag_up_left], SHEARING));
-            }
-            if (!edge_right && !edge_up) {
-                springs.emplace_back(Spring(&point_masses[pm_index], &point_masses[pm_index_diag_up_right], SHEARING));
-            }
-            if (!edge_left_2) {
-                springs.emplace_back(Spring(&point_masses[pm_index], &point_masses[pm_two_left], BENDING));
-            }
-            if (!edge_up_2) {
-                springs.emplace_back(Spring(&point_masses[pm_index], &point_masses[pm_two_above], BENDING));
+    //Create an evenly spaced grid of masses
+    if (orientation == HORIZONTAL) {
+        for (int i=0; i<num_height_points; ++i) {
+            for (int j=0; j<num_width_points; ++j) {
+                Vector3D pos = Vector3D(width_start+j*width_diff, 1, height_start+i*height_diff);                
+                PointMass pm = PointMass(pos, Vector3D(0, 0, 0));
+                point_masses.emplace_back(pm);
             }
         }
-    }*/
-
+    } else if (orientation == VERTICAL) {
+        double min_off = -1.0 / 1000;
+        double max_off = 1.0 / 1000;
+        double y = 0;
+        for (int j = 0; j < num_height_points; ++j) {
+            double x = 0;
+            for (int i = 0; i < num_width_points; ++i) {
+                double rand_off = (double) rand() / RAND_MAX - 1;
+                double z = min_off + rand_off * (max_off - min_off);
+                point_masses.emplace_back(Vector3D(x, y, z), false);
+                x += width_diff;
+            }
+            y += height_diff;
+        }
+    }
 }
 
 void Cloth::simulate(double frames_per_sec, double simulation_steps, ClothParameters *cp,
@@ -142,19 +130,6 @@ void Cloth::simulate(double frames_per_sec, double simulation_steps, ClothParame
   total_external_forces *= mass;
   for(PointMass &pm: this->point_masses)
       pm.forces = total_external_forces;
-
-  /*
-  for (Spring &s : springs) {
-    if (cp->enable_structural_constraints || cp->enable_shearing_constraints || cp->enable_bending_constraints) {
-        double scalar = cp->ks * ((s.pm_a->position - s.pm_b->position).norm() - s.rest_length);
-        if (s.spring_type == BENDING)
-            scalar *= 0.2;
-
-        Vector3D f = scalar * ((s.pm_b->position - s.pm_a->position).unit());
-        s.pm_a->forces += f;
-        s.pm_b->forces -= f;
-    }
-  }*/
 
   // TODO (Part 2): Use Verlet integration to compute new point mass positions
 
@@ -185,30 +160,7 @@ void Cloth::simulate(double frames_per_sec, double simulation_steps, ClothParame
 
   // TODO (Part 2): Constrain the changes to be such that the spring does not change
   // in length more than 10% per timestep [Provot 1995].
-/*
-  for (Spring s : springs) {
-      if (cp->enable_bending_constraints || cp->enable_shearing_constraints || cp->enable_structural_constraints) {
-          // Check if point masses are pinned
-          if (s.pm_a->pinned && s.pm_b->pinned)
-            continue;
-          // Check if spring's length less than 110% of its rest length
-          double diff = (s.pm_b->position - s.pm_a->position).norm() - (double) 1.1 * s.rest_length;
-          if (diff <= 0)
-              continue;
-          Vector3D correction = diff * (s.pm_b->position - s.pm_a->position).unit();
-          if (s.pm_a->pinned) {
-              s.pm_b->position -= correction;
-          }
-          else if (s.pm_b->pinned) {
-              s.pm_a->position += correction;
-          }
-          else {
-              correction *= 0.5;
-              s.pm_b->position -= correction;
-              s.pm_a->position += correction;
-          }
-      }
-  }*/
+
 
 }
 
