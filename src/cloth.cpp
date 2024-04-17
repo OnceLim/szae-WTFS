@@ -134,15 +134,12 @@ void Cloth::simulate(double frames_per_sec, double simulation_steps, ClothParame
   // TODO (Part 2): Use Verlet integration to compute new point mass positions
 
   for (PointMass &pm : point_masses) {
-    // if (!pm.pinned) {
-        Vector3D curr_pos = pm.position;
-        Vector3D last_pos = pm.last_position;
-        Vector3D accel = pm.forces / mass;
-        pm.position = curr_pos + (double)(1.0f - cp->damping / 100.0f) * (curr_pos - last_pos) + accel * pow(delta_t, 2);
-        pm.last_position = curr_pos;
-    // }
+      Vector3D curr_pos = pm.position;
+      Vector3D last_pos = pm.last_position;
+      Vector3D accel = pm.forces / mass;
+      pm.position = curr_pos + (double)(1.0f - cp->damping / 100.0f) * (curr_pos - last_pos) + accel * pow(delta_t, 2);
+      pm.last_position = curr_pos;
   }
-
 
   // TODO (Part 4): Handle self-collisions.
   build_spatial_map();
@@ -161,6 +158,14 @@ void Cloth::simulate(double frames_per_sec, double simulation_steps, ClothParame
   // TODO (Part 2): Constrain the changes to be such that the spring does not change
   // in length more than 10% per timestep [Provot 1995].
 
+//DELETE Points outside boundary
+    std::vector<PointMass*> to_delete;
+    for (PointMass& pm : point_masses) {
+        if (pm.position.x > 5 || pm.position.y > 5 || pm.position.z > 5) {
+            to_delete.push_back(&pm);
+        }
+    }
+  point_masses.erase(std::remove_if(point_masses.begin(), point_masses.end(), [&to_delete](const PointMass& pm) {return std::find(to_delete.begin(), to_delete.end(), &pm) != to_delete.end();}), point_masses.end());
 
 }
 
