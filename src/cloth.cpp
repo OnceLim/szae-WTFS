@@ -230,12 +230,13 @@ float Cloth::hash_position(Vector3D pos) {
 ///////////////////////////////////////////////////////
 
 void Cloth::reset() {
-  PointMass *pm = &point_masses[0];
-  for (int i = 0; i < point_masses.size(); i++) {
-    pm->position = pm->start_position;
-    pm->last_position = pm->start_position;
-    pm++;
-  }
+//  PointMass *pm = &point_masses[0];
+//  for (int i = 0; i < point_masses.size(); i++) {
+//    pm->position = pm->start_position;
+//    pm->last_position = pm->start_position;
+//    pm++;
+//  }
+    point_masses.clear();
 }
 /*
 void Cloth::buildClothMesh() {

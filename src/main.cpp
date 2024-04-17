@@ -470,7 +470,7 @@ int main(int argc, char **argv) {
   createGLContexts();
 
   // Initialize the Cloth object
-//  cloth.buildGrid();
+  cloth.buildGrid();
   //cloth.buildClothMesh();
 
   // Initialize the ClothSimulator object
@@ -496,7 +496,7 @@ int main(int argc, char **argv) {
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
     app->drawContents();
-    if (i > 750 & i % 50 == 49) {
+    if (!app->isPaused() & i % 50 == 49) {
       cloth.buildGrid();
     }
     // Draw nanogui
