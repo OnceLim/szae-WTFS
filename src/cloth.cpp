@@ -153,6 +153,8 @@ void Cloth::simulate(double frames_per_sec, double simulation_steps, ClothParame
         for (CollisionObject *co : *collision_objects) {
             co->collide(pm, delta_t);
         }
+
+        pm.last_velocity = pm.velocity(delta_t);
     }
 
   // TODO (Part 2): Constrain the changes to be such that the spring does not change

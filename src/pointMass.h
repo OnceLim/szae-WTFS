@@ -31,6 +31,7 @@ struct PointMass {
   double density;
   double pressure;
   double mass;
+  Vector3D last_velocity;
 
   // mesh reference
   Halfedge *halfedge;
