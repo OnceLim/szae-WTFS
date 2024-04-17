@@ -365,12 +365,14 @@ void ClothSimulator::drawNormals(GLShader &shader) {
     int num_points = cloth->point_masses.size();
 //
     MatrixXf positions(4, num_points);
+    MatrixXf velocities(3, num_points);
 //  MatrixXf normals(4, num_tris * 3);
 //
     for (int i = 0; i < num_points; i++) {
 //    Triangle *tri = cloth->clothMesh->triangles[i];
 
         Vector3D p1 = cloth->point_masses[i].position;
+        Vector3D v1 = cloth->point_masses[i].last_velocity;
 //    Vector3D p2 = tri->pm2->position;
 //    Vector3D p3 = tri->pm3->position;
 //
@@ -379,6 +381,7 @@ void ClothSimulator::drawNormals(GLShader &shader) {
 //    Vector3D n3 = tri->pm3->normal();
 
         positions.col(i) << p1.x, p1.y, p1.z, 1.0;
+        velocities.col(i) << v1.x, v1.y, v1.z;
 //    positions.col(i * 3 + 1) << p2.x, p2.y, p2.z, 1.0;
 //    positions.col(i * 3 + 2) << p3.x, p3.y, p3.z, 1.0;
 //
@@ -392,6 +395,7 @@ void ClothSimulator::drawNormals(GLShader &shader) {
 
 
     shader.uploadAttrib("in_position", positions, false);
+    shader.uploadAttrib("in_velocity", velocities, false);
     shader.drawArray(GL_POINTS, 0, cloth->point_masses.size());
 }
 
