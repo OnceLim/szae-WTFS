@@ -237,6 +237,7 @@ void ClothSimulator::init() {
 }
 
 bool ClothSimulator::isAlive() { return is_alive; }
+bool ClothSimulator::isPaused() { return is_paused; }
 
 void ClothSimulator::drawContents() {
   glEnable(GL_DEPTH_TEST);
@@ -596,6 +597,7 @@ bool ClothSimulator::keyCallbackEvent(int key, int scancode, int action,
     case 'r':
     case 'R':
       cloth->reset();
+        
       break;
     case ' ':
       resetCamera();
