@@ -28,6 +28,9 @@ struct PointMass {
   Vector3D last_position;
   Vector3D forces;
   Vector3D color;
+  double density;
+  double pressure;
+  double mass;
 
   // mesh reference
   Halfedge *halfedge;
