@@ -4,3 +4,9 @@
 
 
 #include "navierStokes.h"
+
+using namespace std;
+using namespace CGL;
+
+// Temporary inefficient neighbouring search
+
