@@ -496,7 +496,7 @@ int main(int argc, char **argv) {
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
     app->drawContents();
-    if (!app->isPaused() & i % 50 == 49) {
+    if (!app->isPaused() & i % 10 == 9) {
       cloth.buildGrid();
     }
     // Draw nanogui
