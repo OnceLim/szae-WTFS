@@ -159,8 +159,10 @@ void SphereMesh::draw_sphere(GLShader &shader, const Vector3D &p, double r) {
   if (shader.attrib("in_tangent", false) != -1) {
     shader.uploadAttrib("in_tangent", tangents, false);
   }
-
+  shader.setUniform("is_sphere", true, false);
   shader.drawArray(GL_TRIANGLES, 0, sphere_num_indices);
+
+  shader.setUniform("is_sphere", false, false);
 }
 
 } // namespace Misc

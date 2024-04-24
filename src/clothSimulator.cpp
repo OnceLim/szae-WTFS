@@ -403,13 +403,17 @@ void ClothSimulator::drawPhong(GLShader &shader) {
 
     int num_points = cloth->point_masses.size();
     MatrixXf positions(4, num_points);
+    MatrixXf velocities(3, num_points);
 
     for (int i = 0; i < num_points; i++) {
         Vector3D p1 = cloth->point_masses[i].position;
+        Vector3D v1 = cloth->point_masses[i].last_velocity;
         positions.col(i) << p1.x, p1.y, p1.z, 1.0;
+        velocities.col(i) << v1.x, v1.y, v1.z;
     }
 
     shader.uploadAttrib("in_position", positions, false);
+    shader.uploadAttrib("in_velocity", velocities, false);
     shader.drawArray(GL_POINTS, 0, cloth->point_masses.size());
 
 //    for (auto particle : cloth->point_masses) {

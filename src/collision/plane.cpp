@@ -67,5 +67,7 @@ void Plane::render(GLShader &shader) {
     shader.uploadAttrib("in_normal", normals);
   }
 
+  shader.setUniform("is_plane", true, false);
   shader.drawArray(GL_TRIANGLE_STRIP, 0, 4);
+  shader.setUniform("is_plane", false, false);
 }
