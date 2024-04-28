@@ -225,6 +225,49 @@ float Cloth::hash_position(Vector3D pos) {
 
 }
 
+// Encodes Vector3D position into a single integer that can be decoded to obtain each individual position
+int Cloth::encode_position(CGL::Vector3D pos, double h) {
+    int x_box = floor(pos.x / h);
+    int y_box = floor(pos.y / h);
+    int z_box = floor(pos.z / h);
+
+    int key = (x_box & 0x3FF) | ((y_box & 0x3FF) << 10) | ((z_box & 0x3FF) << 20);
+    return key;
+
+}
+
+// decodes encoded key back into Vector3D position
+void Cloth::decode_position(int key, int &x_box, int &y_box, int &z_box) {
+    x_box = key & 0x3FF; // Extract the first 10 bits
+    y_box = (key >> 10) & 0x3FF; // Extract the next 10 bits
+    z_box = (key >> 20) & 0x3FF; // Extract the next 10 bits
+}
+
+void Cloth::set_neighbors(PointMass &pm, double h) {
+    int x_box, y_box, z_box;
+    Vector3D pos = pm.position;
+
+    (pm.neighbors)->clear();
+
+    for (int i = -1; i <= 1; i++) {
+        for (int j = -1; j <= 1; j++) {
+            for (int k = -1; k <= 1; k++) {
+                int neighbor_key = encode_position(pos, h);
+                if (map.count(neighbor_key) > 0) {
+                    // Iterate over each PointMass in the neighboring cell
+                    for (auto q = begin(*(map[neighbor_key])); q != end(*(map[neighbor_key])); q++) {
+                        double dist = (pm.position - (*q)->position).norm();
+                        if (dist <= h && dist > 0) { // Check within radius and not the same point
+                            pm.neighbors->emplace_back(*q);
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+
 ///////////////////////////////////////////////////////
 /// YOU DO NOT NEED TO REFER TO ANY CODE BELOW THIS ///
 ///////////////////////////////////////////////////////

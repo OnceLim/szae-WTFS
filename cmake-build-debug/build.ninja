@@ -1133,6 +1133,14 @@ build src/CMakeFiles/windsim.dir/navierStokes.cpp.o: CXX_COMPILER__windsim_unsca
   OBJECT_DIR = src/CMakeFiles/windsim.dir
   OBJECT_FILE_DIR = src/CMakeFiles/windsim.dir
 
+build src/CMakeFiles/windsim.dir/grid.cpp.o: CXX_COMPILER__windsim_unscanned_Debug /Users/chinzonghan/Documents/Berkeley$ SP24/CS$ 184/szae-WTFS/src/grid.cpp || cmake_object_order_depends_target_windsim
+  DEFINES = -DGLAD_GLAPI_EXPORT -DNANOGUI_GLAD -DNANOGUI_SHARED -DNVG_SHARED
+  DEP_FILE = src/CMakeFiles/windsim.dir/grid.cpp.o.d
+  FLAGS = -std=c++11 -m64 -g -g -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX14.0.sdk -fcolor-diagnostics -Wno-deprecated-declarations -Wno-c++11-extensions
+  INCLUDES = -I"/Users/chinzonghan/Documents/Berkeley SP24/CS 184/szae-WTFS/ext/nanogui/include" -I"/Users/chinzonghan/Documents/Berkeley SP24/CS 184/szae-WTFS/CGL/include" -I/opt/homebrew/include/freetype2 -I"/Users/chinzonghan/Documents/Berkeley SP24/CS 184/szae-WTFS/ext/nanogui/ext/glad/include" -I"/Users/chinzonghan/Documents/Berkeley SP24/CS 184/szae-WTFS/ext/nanogui/ext/glfw/include" -I"/Users/chinzonghan/Documents/Berkeley SP24/CS 184/szae-WTFS/ext/nanogui/ext/nanovg/src" -I"/Users/chinzonghan/Documents/Berkeley SP24/CS 184/szae-WTFS/ext/nanogui/ext/eigen" -F/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX14.0.sdk/System/Library/Frameworks
+  OBJECT_DIR = src/CMakeFiles/windsim.dir
+  OBJECT_FILE_DIR = src/CMakeFiles/windsim.dir
+
 
 # =============================================================================
 # Link build statements for EXECUTABLE target windsim
@@ -1141,7 +1149,7 @@ build src/CMakeFiles/windsim.dir/navierStokes.cpp.o: CXX_COMPILER__windsim_unsca
 #############################################
 # Link the executable windsim
 
-build windsim: CXX_EXECUTABLE_LINKER__windsim_Debug src/CMakeFiles/windsim.dir/cloth.cpp.o src/CMakeFiles/windsim.dir/clothMesh.cpp.o src/CMakeFiles/windsim.dir/collision/sphere.cpp.o src/CMakeFiles/windsim.dir/collision/plane.cpp.o src/CMakeFiles/windsim.dir/main.cpp.o src/CMakeFiles/windsim.dir/clothSimulator.cpp.o src/CMakeFiles/windsim.dir/misc/sphere_drawing.cpp.o src/CMakeFiles/windsim.dir/misc/file_utils.cpp.o src/CMakeFiles/windsim.dir/camera.cpp.o src/CMakeFiles/windsim.dir/navierStokes.cpp.o | CGL/src/libCGL.a ext/nanogui/libnanogui.dylib /opt/homebrew/lib/libfreetype.dylib || CGL/src/libCGL.a ext/nanogui/libnanogui.dylib
+build windsim: CXX_EXECUTABLE_LINKER__windsim_Debug src/CMakeFiles/windsim.dir/cloth.cpp.o src/CMakeFiles/windsim.dir/clothMesh.cpp.o src/CMakeFiles/windsim.dir/collision/sphere.cpp.o src/CMakeFiles/windsim.dir/collision/plane.cpp.o src/CMakeFiles/windsim.dir/main.cpp.o src/CMakeFiles/windsim.dir/clothSimulator.cpp.o src/CMakeFiles/windsim.dir/misc/sphere_drawing.cpp.o src/CMakeFiles/windsim.dir/misc/file_utils.cpp.o src/CMakeFiles/windsim.dir/camera.cpp.o src/CMakeFiles/windsim.dir/navierStokes.cpp.o src/CMakeFiles/windsim.dir/grid.cpp.o | CGL/src/libCGL.a ext/nanogui/libnanogui.dylib /opt/homebrew/lib/libfreetype.dylib || CGL/src/libCGL.a ext/nanogui/libnanogui.dylib
   FLAGS = -std=c++11 -m64 -g -g -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX14.0.sdk
   LINK_LIBRARIES = -Wl,-rpath,"/Users/chinzonghan/Documents/Berkeley SP24/CS 184/szae-WTFS/cmake-build-debug/ext/nanogui"  CGL/src/libCGL.a  ext/nanogui/libnanogui.dylib  -Xlinker -framework -Xlinker Cocoa  -Xlinker -framework -Xlinker OpenGL  -Xlinker -framework -Xlinker CoreVideo  -Xlinker -framework -Xlinker IOKit  /opt/homebrew/lib/libfreetype.dylib
   OBJECT_DIR = src/CMakeFiles/windsim.dir

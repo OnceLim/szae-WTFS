@@ -37,7 +37,17 @@ struct PointMass {
   double density;
   double pressure;
   double mass;
+
+  // Values for navier-stokes-sph
   Vector3D last_velocity;
+  Vector3D temp_velocity;
+  Vector3D delta_p;
+
+  std::vector<PointMass*> *neighbors;
+  double lambda;
+  double rho;
+  Vector3D omega;
+//  Vector3D normal;
 
   // mesh reference
   Halfedge *halfedge;

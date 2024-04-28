@@ -15,22 +15,9 @@
 using namespace std;
 using namespace CGL;
 
-class navierStokes {
+struct navierStokes {
+    navierStokes() {}
 
-private:
-    vector<std::vector<Vector3D>> velocityField;
-    vector<std::vector<double>> pressureField;
-    double viscosity; //might not be required
-    double globalDensity;
-
-    void CheckParticleDistance(PointMass &pm);
-    void CalculateForces(PointMass &pm);
-
-public:
-    void computePressure(PointMass &pm);
-    void computeViscosity(PointMass &pm);
-    void applyForces(PointMass &pm);
-    double smoothingKernel(double distance);
 
 
 };

@@ -57,9 +57,26 @@ struct Cloth {
   void reset();
   //void buildClothMesh();
 
+  // For Windsim
+  double h = 1.0; // h is the distance cap on nearest neighbors
+  void set_neighbors(PointMass &pm, double h);
+  int encode_position(Vector3D pos, double h);
+  void decode_position(int key, int &x_box, int &y_box, int &z_box);
+
   void build_spatial_map();
   void self_collide(PointMass &pm, double simulation_steps);
   float hash_position(Vector3D pos);
+
+  void calculate_lambda(PointMass &pm, double mass, double density, double h, double relaxation);
+
+  void calculate_delta_p(PointMass &pm, double h, Vector3D delta_q, double k, double n, double density);
+
+  void calculate_omega(PointMass &pm, double h);
+
+  void vorticity(PointMass &pm, double h, double delta_t, double vorticity_eps, double mass);
+
+  // c is some constant used in applying XSPH viscosity (see page 3 of Macklin and Muller)
+  void viscosity(PointMass &pm, double c, double h);
 
   // Cloth properties
   double width;

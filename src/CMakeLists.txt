@@ -23,6 +23,8 @@ set(WINDSIM_VIEWER_SOURCE
     camera.cpp
         navierStokes.cpp
         navierStokes.h
+        grid.cpp
+        grid.h
 )
 
 # Windows-only sources
