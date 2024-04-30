@@ -160,7 +160,7 @@ void Cloth::simulate(double frames_per_sec, double simulation_steps, ClothParame
       set_neighbors(pm, h);
   }
 
-  for (int i = 0; i < 5; i++) {
+  for (int i = 0; i < 2; i++) {
       for (PointMass &pm : point_masses) {
           calculate_lambda(pm, mass, cp->density,h, relaxation);
       }
