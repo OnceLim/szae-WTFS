@@ -1,7 +1,7 @@
 {
   "plane": {
     "point": [0, -0.1, 0],
-    "normal": [0, 1, -1],
+    "normal": [0, 1, 0],
     "friction": 0.5
   },
   "sphere": {
@@ -11,7 +11,7 @@
   },
   "cloth": {
     "damping": 0.2,
-    "density": 150.0,
+    "density": 15.0,
     "ks": 5000.0,
     "enable_structural": true,
     "enable_shearing": true,

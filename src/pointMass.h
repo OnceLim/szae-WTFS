@@ -16,7 +16,7 @@ static float DENSITY_OFFSET = 100;
 struct PointMass {
   PointMass(Vector3D position, Vector3D color)
       : color(color), start_position(position), position(position),
-        last_position(position), last_velocity(Vector3D()), temp_velocity(Vector3D()),
+        last_position(position), last_velocity(Vector3D(0, 0, 0.01)), temp_velocity(Vector3D()),
         delta_p(Vector3D()), neighbors(new std::vector<PointMass*>()), omega(Vector3D()){}
 
   Vector3D normal();

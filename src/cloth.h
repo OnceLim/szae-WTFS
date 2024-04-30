@@ -59,11 +59,11 @@ struct Cloth {
 
   // For Windsim, control settings
   double h = 0.15; // h is the distance cap on nearest neighbors
-  double c = 0.0008; // c is some constant used in applying XSPH viscosity (pg 3 of Macklin and Muller)
-  double k = 0.001; // k is a small positive constant used in calculating an artificial pressure (pg 3 of Macklin and Muller)
+  double c = 0.01; // c is some constant used in applying XSPH viscosity (pg 3 of Macklin and Muller)
+  double k = 0.1; // k is a small positive constant used in calculating an artificial pressure (pg 3 of Macklin and Muller)
   double n = 4; // n is some constant used in calculating an artificial pressure (pg 3 of Macklin and Muller)
-  Vector3D delta_q = 0.1 * h * Vector3D(1, 0, 0); // delta_q is a point some fixed distance inside the smoothing kernel radius (pg 3 of Macklin and Muller)
-  double relaxation = 1600; // eps
+  Vector3D delta_q = 0.1 * h * Vector3D(0, 0, 1); // delta_q is a point some fixed distance inside the smoothing kernel radius (pg 3 of Macklin and Muller)
+  double relaxation = 100; // eps
   double vorticity_eps = 0.0002;
   void set_neighbors(PointMass &pm, double h);
   int hash_box(Vector3D pos, double h);
@@ -88,18 +88,20 @@ struct Cloth {
 
 
   // Navier-stokes helper
-  double poly6_kernel(Vector3D pos, double h) {
-      if (pos.norm() > h) {
+  double poly6_kernel(Vector3D r, double h) {
+      if (r.norm() > h) {
           return 0;
       }
-      return 315.0 / (64 * PI * pow(h, 9)) * pow(pow(h, 2) - pos.norm2(), 3);
+      return 315.0 / (64 * PI * pow(h, 9)) * pow(pow(h, 2) - r.norm2(), 3);
   }
 
-    Vector3D spiky_kernel(Vector3D pos, double h) {
-        if (pos.norm() > h) {
+    Vector3D spiky_kernel(Vector3D r, double h) {
+        if (r.norm() > h) {
             return {0,0,0};
         }
-        return -pos * 45.0 / (PI * pow(h, 6) * pos.norm()) * pow(h - pos.norm(), 2);
+//        return -r * 45.0 / (PI * pow(h, 6) * r.norm()) * pow(h - r.norm(), 2);
+
+        return 15 / (PI * pow(h, 6)) * pow(h - r.norm(), 3);
     }
 
   // Cloth properties

@@ -132,26 +132,30 @@ void Cloth::simulate(double frames_per_sec, double simulation_steps, ClothParame
   total_external_forces *= mass;
   for(PointMass &pm: this->point_masses) {
       pm.forces = total_external_forces;
-      Vector3D velocity = pm.last_velocity;
-      velocity += delta_t * pm.forces / mass;
-      Vector3D curr_pos = pm.position;
-      pm.position = curr_pos + delta_t * velocity;
-      pm.last_position = curr_pos;
+//      Vector3D velocity = pm.last_velocity;
+//      velocity += delta_t * pm.forces / mass;
+//      cout << "last_velocity" << endl;
+//      cout << pm.last_velocity << endl;
+//      cout << "velocity" << endl;
+//      cout << velocity << endl;
+//      Vector3D curr_pos = pm.position;
+//      pm.position = curr_pos + delta_t * velocity;
+//      pm.last_position = curr_pos;
   }
 
 //  // TODO (Part 2): Use Verlet integration to compute new point mass positions
-//  for (PointMass &pm : point_masses) {
-//      Vector3D curr_pos = pm.position;
-//      Vector3D last_pos = pm.last_position;
-//      Vector3D accel = pm.forces / mass;
-//      pm.position = curr_pos + (double)(1.0f - cp->damping / 100.0f) * (curr_pos - last_pos) + accel * pow(delta_t, 2);
-//      pm.last_position = curr_pos;
-//  }
+  for (PointMass &pm : point_masses) {
+      Vector3D curr_pos = pm.position;
+      Vector3D last_pos = pm.last_position;
+      Vector3D accel = pm.forces / mass;
+      pm.position = curr_pos + (double)(1.0f - cp->damping / 100.0f) * (curr_pos - last_pos) + accel * pow(delta_t, 2);
+      pm.last_position = curr_pos;
+  }
 
 
   // Find and update neighboring particles
   build_spatial_map();
-#pragma omp parallel for
+//#pragma omp parallel for
   for (PointMass &pm : point_masses) {
       set_neighbors(pm, h);
   }
@@ -163,44 +167,47 @@ void Cloth::simulate(double frames_per_sec, double simulation_steps, ClothParame
 
       for (PointMass &pm : point_masses) {
           calculate_delta_p(pm, h, delta_q, k, n, cp->density);
+          cout << pm.delta_p << endl;
       }
 
       for (PointMass &pm : point_masses) {
           pm.position += pm.delta_p;
+//          cout << "LOL" << endl;
       }
   }
 
-  for (PointMass &pm : point_masses) {
-      viscosity(pm, c, h);
-  }
-
-  for (PointMass &pm : point_masses) {
-      calculate_omega(pm, h);
-  }
-
-  for (PointMass &pm : point_masses) {
-      vorticity(pm, h, delta_t, vorticity_eps, mass);
-  }
+//  for (PointMass &pm : point_masses) {
+//      viscosity(pm, c, h);
+//  }
+//
+//  for (PointMass &pm : point_masses) {
+//      calculate_omega(pm, h);
+//  }
+//
+//  for (PointMass &pm : point_masses) {
+//      vorticity(pm, h, delta_t, vorticity_eps, mass);
+//  }
 
 
 
     // TODO (Part 4): Handle self-collisions.
-  for (PointMass &pm : point_masses) {
-      self_collide(pm, simulation_steps);
-  }
+//  for (PointMass &pm : point_masses) {
+//      self_collide(pm, simulation_steps);
+//  }
 
 
 //   TODO (Part 3): Handle collisions with other primitives.
-    for (PointMass &pm : point_masses) {
-        for (CollisionObject *co : *collision_objects) {
-            co->collide(pm, delta_t);
-        }
-    }
+//    for (PointMass &pm : point_masses) {
+//        for (CollisionObject *co : *collision_objects) {
+//            co->collide(pm, delta_t);
+//        }
+//    }
 
 // Update velocity
-for (PointMass &pm : point_masses) {
-    pm.last_velocity = pm.temp_velocity;
-}
+//for (PointMass &pm : point_masses) {
+//    pm.last_velocity = pm.temp_velocity;
+////    cout << pm.temp_velocity << endl;
+//}
 
 
     // TODO (Part 2): Constrain the changes to be such that the spring does not change
@@ -285,15 +292,7 @@ int Cloth::hash_box(CGL::Vector3D pos, double h) {
 
 }
 
-// decodes encoded key back into Vector3D position
-//void Cloth::decode_position(int key, int &x_box, int &y_box, int &z_box) {
-//    x_box = key & 0x3FF; // Extract the first 10 bits
-//    y_box = (key >> 10) & 0x3FF; // Extract the next 10 bits
-//    z_box = (key >> 20) & 0x3FF; // Extract the next 10 bits
-//}
-
 void Cloth::set_neighbors(PointMass &pm, double h) {
-    int x_box, y_box, z_box;
     Vector3D pos = pm.position;
 
     (pm.neighbors)->clear();
@@ -354,11 +353,11 @@ void Cloth::calculate_delta_p(PointMass &pm, double h, CGL::Vector3D delta_q, do
     Vector3D delta_p = Vector3D();
     for (auto pj= begin(*(pm.neighbors)); pj != end(*(pm.neighbors)); pj++) {
         Vector3D r = pm.position - (*pj)->position;
-        Vector3D grad_j = spiky_kernel(r, h);
 
         double numer = poly6_kernel(r, h);
         double denom = poly6_kernel(delta_q, h);
         double s_corr = -k * pow(numer / denom, n);
+        Vector3D grad_j = spiky_kernel(r, h);
 
         delta_p += (pm.lambda + (*pj)->lambda + s_corr) * grad_j;
     }
@@ -369,7 +368,7 @@ void Cloth::calculate_delta_p(PointMass &pm, double h, CGL::Vector3D delta_q, do
 // Update p->temp_velocity with viscosity as given in Equation 17
 void Cloth::viscosity(PointMass &pm, double c, double h) {
     for (auto pj = begin(*pm.neighbors); pj != end(*pm.neighbors); pj++) {
-        Vector3D v_ij = (*pj)->last_velocity- pm.last_velocity;
+        Vector3D v_ij = (*pj)->last_velocity - pm.last_velocity;
         pm.temp_velocity += c * v_ij * poly6_kernel(pm.position - (*pj)->position, h);
     }
 }
