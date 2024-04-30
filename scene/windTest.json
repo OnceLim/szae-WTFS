@@ -1,11 +1,44 @@
 {
-   
-
     "plane1": {
-        "point": [0, -0.2, 1],
-        "normal": [0, 0, -1],
-        "friction": 0.5
-      },
+               "point": [0, -0.1, 1.5],
+               "normal": [0, 1, 0],
+               "friction": 0.5
+             },
+       "plane2": {
+               "point": [0, 1.1, 1.5],
+               "normal": [0, 1, 0],
+               "friction": 0.5
+             },
+           "plane3": {
+               "point": [1.1, 0, 1.5],
+               "normal": [1, 0, 0],
+               "friction": 0.5
+             },
+           "plane4": {
+               "point": [-0.1, 0, 1.5],
+               "normal": [1, 0, 0],
+               "friction": 0.5
+             },
+        "sphere1": {
+           "origin": [0.5, 0.5, 0.5],
+           "radius": 0.2,
+           "friction": 0.3
+         },
+         "sphere2": {
+           "origin": [0.5, 0.3, 0.5],
+           "radius": 0.2,
+           "friction": 0.3
+         },
+         "sphere3": {
+            "origin": [0.5, 0.5, 1],
+            "radius": 0.2,
+            "friction": 0.3
+          },
+          "sphere4": {
+            "origin": [0.5, 0.3, 1],
+            "radius": 0.2,
+            "friction": 0.3
+          },
   "cloth": {
     "damping": 0.2,
     "density": 150.0,

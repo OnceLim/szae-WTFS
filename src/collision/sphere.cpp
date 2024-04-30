@@ -36,7 +36,7 @@ void Sphere::collide(PointMass &pm, double delta_t) {
     pm.position = tangentPoint + reflectedVelocityNormal * delta_t + velocityTangent * delta_t * (1 - friction);
     pm.last_position = tangentPoint;  // Update the last position to the tangent point post-collision
     pm.last_velocity = reflectedVelocityNormal + velocityTangent * (1-friction);
-
+    pm.temp_velocity = reflectedVelocityNormal + velocityTangent * (1-friction);
 
 }
 
