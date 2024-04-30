@@ -27,7 +27,10 @@ void main() {
   vec3 h = (v + normalize(l)) / length(v + normalize(l));
   vec3 spec = k_s * u_light_intensity / dot(l, l) * pow(max(0, dot(normalize(vec3(v_normal)), normalize(h))), 25);
 
-  out_color = vec4(ambient+diffuse+spec, 1.0);
+  out_color = vec4(ambient+diffuse+spec, 0.0);
+      if (is_sphere) {
+          out_color = vec4(ambient+diffuse+spec, 1.0);
+      }
   } else { // color dynamics based on velocity for the wind particles
     float speed = length(v_velocity); // Calculate the speed (magnitude of velocity)
     vec3 color = vec3(0.0); 

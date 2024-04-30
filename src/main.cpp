@@ -171,7 +171,7 @@ bool loadObjectsFromFile(string filename, Cloth *cloth, ClothParameters *cp, vec
 
     // Check that object is valid
     unordered_set<string>::const_iterator query = VALID_KEYS.find(key);
-    if (query == VALID_KEYS.end()) {
+      if (query == VALID_KEYS.end() && !(key.substr(0,6) == SPHERE) && !(key.substr(0,5) == PLANE)) {
       cout << "Invalid scene object found: " << key << endl;
       exit(-1);
     }
@@ -299,7 +299,7 @@ bool loadObjectsFromFile(string filename, Cloth *cloth, ClothParameters *cp, vec
       cp->density = density;
       cp->damping = damping;
       cp->ks = ks;
-    } else if (key == SPHERE) {
+    } else if (key.substr(0,6) == SPHERE) {
       Vector3D origin;
       double radius, friction;
 
