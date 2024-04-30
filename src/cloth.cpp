@@ -177,7 +177,7 @@ void Cloth::build_spatial_map() {
 
   // TODO (Part 4): Build a spatial map out of all of the point masses.
   for (PointMass &pm : point_masses) {
-      float hash = hash_position(pm.position);
+      float hash = hash_box(pm.position, h);
       if (!map[hash]) {
           map[hash] = new vector<PointMass*>;
       }
@@ -225,8 +225,9 @@ float Cloth::hash_position(Vector3D pos) {
 
 }
 
-// Encodes Vector3D position into a single integer that can be decoded to obtain each individual position
-int Cloth::encode_position(CGL::Vector3D pos, double h) {
+// Hashes Vector3D position into a single integer that belongs to a 3D box
+// to check if neighboring particles are within the box or adjacent boxes
+int Cloth::hash_box(CGL::Vector3D pos, double h) {
     int x_box = floor(pos.x / h);
     int y_box = floor(pos.y / h);
     int z_box = floor(pos.z / h);
@@ -237,11 +238,11 @@ int Cloth::encode_position(CGL::Vector3D pos, double h) {
 }
 
 // decodes encoded key back into Vector3D position
-void Cloth::decode_position(int key, int &x_box, int &y_box, int &z_box) {
-    x_box = key & 0x3FF; // Extract the first 10 bits
-    y_box = (key >> 10) & 0x3FF; // Extract the next 10 bits
-    z_box = (key >> 20) & 0x3FF; // Extract the next 10 bits
-}
+//void Cloth::decode_position(int key, int &x_box, int &y_box, int &z_box) {
+//    x_box = key & 0x3FF; // Extract the first 10 bits
+//    y_box = (key >> 10) & 0x3FF; // Extract the next 10 bits
+//    z_box = (key >> 20) & 0x3FF; // Extract the next 10 bits
+//}
 
 void Cloth::set_neighbors(PointMass &pm, double h) {
     int x_box, y_box, z_box;
@@ -252,7 +253,7 @@ void Cloth::set_neighbors(PointMass &pm, double h) {
     for (int i = -1; i <= 1; i++) {
         for (int j = -1; j <= 1; j++) {
             for (int k = -1; k <= 1; k++) {
-                int neighbor_key = encode_position(pos, h);
+                int neighbor_key = hash_box(pos, h);
                 if (map.count(neighbor_key) > 0) {
                     // Iterate over each PointMass in the neighboring cell
                     for (auto q = begin(*(map[neighbor_key])); q != end(*(map[neighbor_key])); q++) {
@@ -265,6 +266,96 @@ void Cloth::set_neighbors(PointMass &pm, double h) {
             }
         }
     }
+}
+
+
+// Calculate p->lambda as given in Equation 11
+void Cloth::calculate_lambda(PointMass &pm, double mass, double density, double h, double relaxation) {
+
+    if (pm.neighbors->empty()) {
+        pm.lambda = 0;
+        return;
+    }
+    // Calculate C_i
+    double p_i = 0;
+    for (auto q = begin(*(pm.neighbors)); q != end(*(pm.neighbors)); q++) {
+        p_i += poly6_kernel(pm.position - (*q)->position, h);
+    }
+    p_i *= mass;
+
+    double C_i = p_i / density - 1;
+
+    Vector3D eqn1 = Vector3D();
+    double eqn2 = 0;
+    for (auto pj = begin(*(pm.neighbors)); pj != end(*(pm.neighbors)); pj++) {
+        Vector3D r = pm.position - (*pj)->position;
+        Vector3D grad_j = spiky_kernel(r, h);
+
+        eqn1 += grad_j;
+        eqn2 += grad_j.norm2();
+    }
+    double denom = 1.0 / pow(density, 2) * (eqn1.norm2() + eqn2);
+
+    pm.lambda = -C_i / (denom + relaxation);
+}
+
+// Calculate p->delta_p as given in Equation 14
+// Tensile Instability
+void Cloth::calculate_delta_p(PointMass &pm, double h, CGL::Vector3D delta_q, double k, double n, double density) {
+
+    Vector3D delta_p = Vector3D();
+    for (auto pj= begin(*(pm.neighbors)); pj != end(*(pm.neighbors)); pj++) {
+        Vector3D r = pm.position - (*pj)->position;
+        Vector3D grad_j = spiky_kernel(r, h);
+
+        double numer = poly6_kernel(r, h);
+        double denom = poly6_kernel(delta_q, h);
+        double s_corr = -k * pow(numer / denom, n);
+
+        delta_p += (pm.lambda + (*pj)->lambda + s_corr) * grad_j;
+    }
+    delta_p *= 1.0 / density;
+    pm.delta_p = delta_p;
+}
+
+// Update p->temp_velocity with viscosity as given in Equation 17
+void Cloth::viscosity(PointMass &pm, double c, double h) {
+    for (auto pj = begin(*pm.neighbors); pj != end(*pm.neighbors); pj++) {
+        Vector3D v_ij = (*pj)->last_velocity- pm.last_velocity;
+        pm.temp_velocity += c * v_ij * poly6_kernel(pm.position - (*pj)->position, h);
+    }
+}
+
+// Vorticity, calculate p->omega as given in Equation 15
+void Cloth::calculate_omega(PointMass &pm, double h) {
+    pm.omega = Vector3D();
+
+    for (auto pj = begin(*pm.neighbors); pj != end(*pm.neighbors); pj++) {
+        Vector3D v_ij = (*pj)->last_velocity - pm.last_velocity;
+        pm.omega += cross(v_ij, -spiky_kernel(pm.position - (*pj)->position, h));
+    }
+}
+
+// Calculate vorticity force on p as given in Equation 16 and apply it to p->temp_velocity
+void Cloth::vorticity(PointMass &pm, double h, double delta_t, double vorticity_eps, double mass) {
+
+    Vector3D N = Vector3D();
+
+    if (pm.omega.norm() > EPS_F) {
+        for (auto pj = begin(*pm.neighbors); pj != end(*pm.neighbors); pj++) {
+            Vector3D r = (*pj)->position - pm.position;
+            if (r.norm() <= h) {
+                double d_omega = (*pj)->omega.norm() - pm.omega.norm();
+                N += Vector3D(d_omega / r.x, d_omega / r.y, d_omega / r.z);
+            }
+        }
+
+        if (N.norm() > EPS_F) {
+            N.normalize();
+        }
+    }
+
+    pm.temp_velocity += delta_t * vorticity_eps * cross(N, pm.omega) / mass;
 }
 
 

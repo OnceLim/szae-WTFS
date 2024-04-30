@@ -36,7 +36,7 @@ struct PointMass {
   Vector3D color;
   double density;
   double pressure;
-  double mass;
+  double mass = 0.01;
 
   // Values for navier-stokes-sph
   Vector3D last_velocity;
