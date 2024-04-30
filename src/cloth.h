@@ -58,7 +58,7 @@ struct Cloth {
   //void buildClothMesh();
 
   // For Windsim, control settings
-  double h = 1; // h is the distance cap on nearest neighbors
+  double h = 0.15; // h is the distance cap on nearest neighbors
   double c = 0.0008; // c is some constant used in applying XSPH viscosity (pg 3 of Macklin and Muller)
   double k = 0.001; // k is a small positive constant used in calculating an artificial pressure (pg 3 of Macklin and Muller)
   double n = 4; // n is some constant used in calculating an artificial pressure (pg 3 of Macklin and Muller)

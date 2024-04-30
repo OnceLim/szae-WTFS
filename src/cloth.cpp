@@ -151,6 +151,7 @@ void Cloth::simulate(double frames_per_sec, double simulation_steps, ClothParame
 
   // Find and update neighboring particles
   build_spatial_map();
+#pragma omp parallel for
   for (PointMass &pm : point_masses) {
       set_neighbors(pm, h);
   }
