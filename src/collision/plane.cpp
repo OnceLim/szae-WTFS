@@ -79,6 +79,10 @@ void Plane::render(GLShader &shader) {
   MatrixXf positions(3, 4);
   MatrixXf normals(3, 4);
     
+    if (point == Vector3D(1.1,0,1.5)) {
+        return;
+    }
+    
     positions.col(0) << sPoint + 2 * (sCross + sParallel);
       positions.col(1) << sPoint + 2 * (sCross - sParallel);
       positions.col(2) << sPoint + 2 * (-sCross + sParallel);
