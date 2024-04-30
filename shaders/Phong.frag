@@ -26,7 +26,7 @@ void main() {
   vec3 v = normalize(u_cam_pos - v_position.xyz);
   vec3 h = (v + normalize(l)) / length(v + normalize(l));
   vec3 spec = k_s * u_light_intensity / dot(l, l) * pow(max(0, dot(normalize(vec3(v_normal)), normalize(h))), 25);
-  out_color = vec4(ambient+diffuse+spec, 0.0);
+  out_color = vec4(ambient+diffuse+spec, 1.0);
       if (is_sphere){
           out_color = vec4(ambient+diffuse+spec, 1.0);
       }
