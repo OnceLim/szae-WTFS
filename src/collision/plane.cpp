@@ -78,11 +78,11 @@ void Plane::render(GLShader &shader) {
 
   MatrixXf positions(3, 4);
   MatrixXf normals(3, 4);
-
-  positions.col(0) << sPoint + 2 * (sCross + sParallel);
-  positions.col(1) << sPoint + 2 * (sCross - sParallel);
-  positions.col(2) << sPoint + 2 * (-sCross + sParallel);
-  positions.col(3) << sPoint + 2 * (-sCross - sParallel);
+    
+    positions.col(0) << sPoint + 2 * (sCross + sParallel);
+      positions.col(1) << sPoint + 2 * (sCross - sParallel);
+      positions.col(2) << sPoint + 2 * (-sCross + sParallel);
+      positions.col(3) << sPoint + 2 * (-sCross - sParallel);
 
   normals.col(0) << sNormal;
   normals.col(1) << sNormal;
@@ -96,7 +96,7 @@ void Plane::render(GLShader &shader) {
   if (shader.attrib("in_normal", false) != -1) {
     shader.uploadAttrib("in_normal", normals);
   }
-
+    
   shader.setUniform("is_plane", true, false);
   shader.drawArray(GL_TRIANGLE_STRIP, 0, 4);
   shader.setUniform("is_plane", false, false);
