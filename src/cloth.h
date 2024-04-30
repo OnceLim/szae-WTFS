@@ -57,8 +57,14 @@ struct Cloth {
   void reset();
   //void buildClothMesh();
 
-  // For Windsim
-  double h = 1.0; // h is the distance cap on nearest neighbors
+  // For Windsim, control settings
+  double h = 1; // h is the distance cap on nearest neighbors
+  double c = 0.0008; // c is some constant used in applying XSPH viscosity (pg 3 of Macklin and Muller)
+  double k = 0.001; // k is a small positive constant used in calculating an artificial pressure (pg 3 of Macklin and Muller)
+  double n = 4; // n is some constant used in calculating an artificial pressure (pg 3 of Macklin and Muller)
+  Vector3D delta_q = 0.1 * h * Vector3D(1, 0, 0); // delta_q is a point some fixed distance inside the smoothing kernel radius (pg 3 of Macklin and Muller)
+  double relaxation = 1600; // eps
+  double vorticity_eps = 0.0002;
   void set_neighbors(PointMass &pm, double h);
   int hash_box(Vector3D pos, double h);
 //  void decode_position(int key, int &x_box, int &y_box, int &z_box);

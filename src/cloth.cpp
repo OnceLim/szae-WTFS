@@ -127,22 +127,63 @@ void Cloth::simulate(double frames_per_sec, double simulation_steps, ClothParame
   for(const Vector3D& acc: external_accelerations)
       total_external_forces += acc;
 
+
+  // Update velocity and position by applying forces
   total_external_forces *= mass;
-  for(PointMass &pm: this->point_masses)
+  for(PointMass &pm: this->point_masses) {
       pm.forces = total_external_forces;
-
-  // TODO (Part 2): Use Verlet integration to compute new point mass positions
-
-  for (PointMass &pm : point_masses) {
+      Vector3D velocity = pm.last_velocity;
+      velocity += delta_t * pm.forces / mass;
       Vector3D curr_pos = pm.position;
-      Vector3D last_pos = pm.last_position;
-      Vector3D accel = pm.forces / mass;
-      pm.position = curr_pos + (double)(1.0f - cp->damping / 100.0f) * (curr_pos - last_pos) + accel * pow(delta_t, 2);
+      pm.position = curr_pos + delta_t * velocity;
       pm.last_position = curr_pos;
   }
 
-  // TODO (Part 4): Handle self-collisions.
+//  // TODO (Part 2): Use Verlet integration to compute new point mass positions
+//  for (PointMass &pm : point_masses) {
+//      Vector3D curr_pos = pm.position;
+//      Vector3D last_pos = pm.last_position;
+//      Vector3D accel = pm.forces / mass;
+//      pm.position = curr_pos + (double)(1.0f - cp->damping / 100.0f) * (curr_pos - last_pos) + accel * pow(delta_t, 2);
+//      pm.last_position = curr_pos;
+//  }
+
+
+  // Find and update neighboring particles
   build_spatial_map();
+  for (PointMass &pm : point_masses) {
+      set_neighbors(pm, h);
+  }
+
+  for (int i = 0; i < 5; i++) {
+      for (PointMass &pm : point_masses) {
+          calculate_lambda(pm, mass, cp->density,h, relaxation);
+      }
+
+      for (PointMass &pm : point_masses) {
+          calculate_delta_p(pm, h, delta_q, k, n, cp->density);
+      }
+
+      for (PointMass &pm : point_masses) {
+          pm.position += pm.delta_p;
+      }
+  }
+
+  for (PointMass &pm : point_masses) {
+      viscosity(pm, c, h);
+  }
+
+  for (PointMass &pm : point_masses) {
+      calculate_omega(pm, h);
+  }
+
+  for (PointMass &pm : point_masses) {
+      vorticity(pm, h, delta_t, vorticity_eps, mass);
+  }
+
+
+
+    // TODO (Part 4): Handle self-collisions.
   for (PointMass &pm : point_masses) {
       self_collide(pm, simulation_steps);
   }
@@ -155,7 +196,13 @@ void Cloth::simulate(double frames_per_sec, double simulation_steps, ClothParame
         }
     }
 
-  // TODO (Part 2): Constrain the changes to be such that the spring does not change
+// Update velocity
+for (PointMass &pm : point_masses) {
+    pm.last_velocity = pm.temp_velocity;
+}
+
+
+    // TODO (Part 2): Constrain the changes to be such that the spring does not change
   // in length more than 10% per timestep [Provot 1995].
 
 //DELETE Points outside boundary

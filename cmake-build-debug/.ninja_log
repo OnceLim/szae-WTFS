@@ -102,3 +102,11 @@
 2593	3560	1714435725864453197	src/CMakeFiles/windsim.dir/navierStokes.cpp.o	65054d2f78735845
 1500	4070	1714435726370013371	src/CMakeFiles/windsim.dir/clothSimulator.cpp.o	60e6966ae82405f1
 4070	4180	1714435726488069279	windsim	565c05dee7356764
+68	1650	1714441153938076086	src/CMakeFiles/windsim.dir/navierStokes.cpp.o	65054d2f78735845
+67	1663	1714441153951418450	src/CMakeFiles/windsim.dir/clothMesh.cpp.o	a6152cc1012dab2
+68	1664	1714441153954553896	src/CMakeFiles/windsim.dir/collision/sphere.cpp.o	d6178f64c42cb2e9
+68	1898	1714441154191587223	src/CMakeFiles/windsim.dir/collision/plane.cpp.o	e9aac7a604ff3f1f
+68	2255	1714441154549447371	src/CMakeFiles/windsim.dir/main.cpp.o	597ada567e70008e
+68	2919	1714441155210320547	src/CMakeFiles/windsim.dir/clothSimulator.cpp.o	60e6966ae82405f1
+21	1371	1714441170725880615	src/CMakeFiles/windsim.dir/cloth.cpp.o	1b47c4c28d1255f7
+1371	1633	1714441170988695258	windsim	565c05dee7356764
