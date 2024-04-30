@@ -167,11 +167,12 @@ void Cloth::simulate(double frames_per_sec, double simulation_steps, ClothParame
 
       for (PointMass &pm : point_masses) {
           calculate_delta_p(pm, h, delta_q, k, n, cp->density);
-          cout << pm.delta_p << endl;
       }
 
       for (PointMass &pm : point_masses) {
+          Vector3D force_f = pm.delta_p * mass / delta_t;
           pm.position += pm.delta_p;
+//          cout << pm.delta_p << endl;
 //          cout << "LOL" << endl;
       }
   }
