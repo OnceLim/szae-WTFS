@@ -34,7 +34,7 @@ void main() {
     float speed = length(v_velocity); // Calculate the speed (magnitude of velocity)
     vec3 color = vec3(0.0); 
 
-    float estimatedMaxVelocity = 1.3; // meters per second
+    float estimatedMaxVelocity = 5.0; 
 
     color.r = clamp(speed / estimatedMaxVelocity, 0.0, 1.0); 
     color.g = 1.0 - clamp(speed / estimatedMaxVelocity, 0.0, 1.0); 
