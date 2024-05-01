@@ -198,11 +198,11 @@ void Cloth::simulate(double frames_per_sec, double simulation_steps, ClothParame
 
 
 //   TODO (Part 3): Handle collisions with other primitives.
-//    for (PointMass &pm : point_masses) {
-//        for (CollisionObject *co : *collision_objects) {
-//            co->collide(pm, delta_t);
-//        }
-//    }
+    for (PointMass &pm : point_masses) {
+        for (CollisionObject *co : *collision_objects) {
+            co->collide(pm, delta_t);
+        }
+    }
 
 // Update velocity
 //for (PointMass &pm : point_masses) {
