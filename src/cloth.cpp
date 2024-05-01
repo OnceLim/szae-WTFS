@@ -132,21 +132,21 @@ void Cloth::simulate(double frames_per_sec, double simulation_steps, ClothParame
   total_external_forces *= mass;
   for(PointMass &pm: this->point_masses) {
       pm.forces = total_external_forces;
-      Vector3D velocity = pm.last_velocity;
-      velocity += delta_t * pm.forces / mass;
-      Vector3D curr_pos = pm.position;
-      pm.position = curr_pos + delta_t * velocity;
-      pm.last_position = curr_pos;
+//      Vector3D velocity = pm.last_velocity;
+//      velocity += delta_t * pm.forces / mass;
+//      Vector3D curr_pos = pm.position;
+//      pm.position = curr_pos + delta_t * velocity;
+//      pm.last_position = curr_pos;
   }
 
 //  // TODO (Part 2): Use Verlet integration to compute new point mass positions
-//  for (PointMass &pm : point_masses) {
-//      Vector3D curr_pos = pm.position;
-//      Vector3D last_pos = pm.last_position;
-//      Vector3D accel = pm.forces / mass;
-//      pm.position = curr_pos + (double)(1.0f - cp->damping / 100.0f) * (curr_pos - last_pos) + accel * pow(delta_t, 2);
-//      pm.last_position = curr_pos;
-//  }
+  for (PointMass &pm : point_masses) {
+      Vector3D curr_pos = pm.position;
+      Vector3D last_pos = pm.last_position;
+      Vector3D accel = pm.forces / mass;
+      pm.position = curr_pos + (double)(1.0f - cp->damping / 100.0f) * (curr_pos - last_pos) + accel * pow(delta_t, 2);
+      pm.last_position = curr_pos;
+  }
 
 
   // Find and update neighboring particles
@@ -156,7 +156,14 @@ void Cloth::simulate(double frames_per_sec, double simulation_steps, ClothParame
       set_neighbors(pm, h);
   }
 
-  for (int i = 0; i < 5; i++) {
+//   TODO (Part 3): Handle collisions with other primitives.
+    for (PointMass &pm : point_masses) {
+        for (CollisionObject *co : *collision_objects) {
+            co->collide(pm, delta_t);
+        }
+    }
+
+  for (int i = 0; i < 10; i++) {
       for (PointMass &pm : point_masses) {
           calculate_lambda(pm, mass, cp->density,h, relaxation);
       }
@@ -166,40 +173,41 @@ void Cloth::simulate(double frames_per_sec, double simulation_steps, ClothParame
       }
 
       for (PointMass &pm : point_masses) {
+          if (pm.position.z + pm.delta_p.z < 0) {
+              double reflection_factor = 0.5; // Adjust this value as needed
+              pm.delta_p.z = -reflection_factor * pm.position.z;
+          }
+
           pm.position += pm.delta_p;
+
       }
   }
 
-  for (PointMass &pm : point_masses) {
-      viscosity(pm, c, h);
-  }
 
-  for (PointMass &pm : point_masses) {
-      calculate_omega(pm, h);
-  }
 
-  for (PointMass &pm : point_masses) {
-      vorticity(pm, h, delta_t, vorticity_eps, mass);
-  }
+//  for (PointMass &pm : point_masses) {
+//      viscosity(pm, c, h);
+//  }
+//
+//  for (PointMass &pm : point_masses) {
+//      calculate_omega(pm, h);
+//  }
+//
+//  for (PointMass &pm : point_masses) {
+//      vorticity(pm, h, delta_t, vorticity_eps, mass);
+//  }
 
 
 
     // TODO (Part 4): Handle self-collisions.
-  for (PointMass &pm : point_masses) {
-      self_collide(pm, simulation_steps);
-  }
+//  for (PointMass &pm : point_masses) {
+//      self_collide(pm, simulation_steps);
+//  }
 
-
-//   TODO (Part 3): Handle collisions with other primitives.
-    for (PointMass &pm : point_masses) {
-        for (CollisionObject *co : *collision_objects) {
-            co->collide(pm, delta_t);
-        }
-    }
 
 // Update velocity
 for (PointMass &pm : point_masses) {
-    pm.last_velocity = pm.temp_velocity;
+    pm.last_velocity = pm.velocity(delta_t);
 }
 
 
@@ -209,7 +217,7 @@ for (PointMass &pm : point_masses) {
 //DELETE Points outside boundary
     std::vector<PointMass*> to_delete;
     for (PointMass& pm : point_masses) {
-        if (pm.position.x > 5 || pm.position.y > 5 || pm.position.z > 5) {
+        if (pm.position.x > 5 || pm.position.y > 5 || pm.position.z > 5 || pm.position.z < -0.1) {
             to_delete.push_back(&pm);
         }
     }

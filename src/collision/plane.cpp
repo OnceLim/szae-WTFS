@@ -55,11 +55,14 @@ void Plane::collide(PointMass &pm, double delta_t) {
 
     // Reflect the normal component for the bounce (perfectly elastic collision)
     // Coefficient of Restitution (cr) is typically between 0 and 1, with 1 being a perfectly elastic collision.
-    double cr = 1.0; // Assuming a perfectly elastic collision
+    double cr = 0.2; // Assuming a perfectly elastic collision
     Vector3D reflectedVelocityNormal = velocityNormal * (-cr);
 
     // Apply the correction to the point mass's position
-    pm.position = tangentPoint + reflectedVelocityNormal * delta_t + velocityTangent * delta_t * (1 - friction);
+    Vector3D new_pos = tangentPoint + reflectedVelocityNormal * delta_t + velocityTangent * delta_t * (1 - friction);
+    if (new_pos.z < 0)
+        new_pos.z = -new_pos.z * 0.5;
+    pm.position = new_pos;
     pm.last_position = tangentPoint;  // Update the last position to the tangent point post-collision
     pm.last_velocity = reflectedVelocityNormal + velocityTangent * (1-friction);
     pm.temp_velocity = reflectedVelocityNormal + velocityTangent * (1-friction);
