@@ -209,7 +209,7 @@ for (PointMass &pm : point_masses) {
 //DELETE Points outside boundary
     std::vector<PointMass*> to_delete;
     for (PointMass& pm : point_masses) {
-        if (pm.position.x > 5 || pm.position.y > 5 || pm.position.z > 5) {
+        if (pm.position.x > 3 || pm.position.y > 3 || pm.position.z > 3|| pm.position.x < -3 || pm.position.y < -3 || pm.position.z < -3) {
             to_delete.push_back(&pm);
         }
     }
