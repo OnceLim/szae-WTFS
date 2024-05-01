@@ -52,11 +52,31 @@ void Plane::render(GLShader &shader) {
     if (point == Vector3D(1.1,0,1.5)) {
         return;
     }
-
-  positions.col(0) << sPoint + 2 * (sCross + sParallel);
-  positions.col(1) << sPoint + 2 * (sCross - sParallel);
-  positions.col(2) << sPoint + 2 * (-sCross + sParallel);
-  positions.col(3) << sPoint + 2 * (-sCross - sParallel);
+    
+//    positions.col(0) << Vector3f(0,-0.1,1.5);
+//      positions.col(1) << Vector3f(0,-0.1,0);
+//      positions.col(2) << Vector3f(0,1.1,1.5);
+//      positions.col(3) << Vector3f(0,1.1,0);
+    if (point == Vector3D(0, -0.1, 1.5)) {
+        positions.col(0) << Vector3f(-0.1,-0.1,2);
+          positions.col(1) << Vector3f(-0.1,-0.1,0);
+          positions.col(2) << Vector3f(-0.1,1.1,2);
+          positions.col(3) << Vector3f(-0.1,1.1,0);
+    }
+    if (point == Vector3D(0, 1.1, 1.5)) {
+        positions.col(0) << Vector3f(-0.1,-0.1,2);
+          positions.col(1) << Vector3f(-0.1,-0.1,0);
+          positions.col(2) << Vector3f(1.1,-0.1,2);
+          positions.col(3) << Vector3f(1.1,-0.1,0);
+        
+    }
+    if (point == Vector3D(-0.1, 0, 1.5)) {
+        positions.col(0) << Vector3f(-0.1,1.1,2);
+          positions.col(1) << Vector3f(-0.1,1.1,0);
+          positions.col(2) << Vector3f(1.1,1.1,2);
+          positions.col(3) << Vector3f(1.1,1.1,0);
+        
+    }
 
   normals.col(0) << sNormal;
   normals.col(1) << sNormal;
