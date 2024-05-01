@@ -40,3 +40,4 @@ CMakeSettings.json
 *.app
 build
 xcode
+cmake-build-debug
